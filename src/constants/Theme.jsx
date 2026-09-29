@@ -23,10 +23,12 @@ export const Colors = {
   chocolateBackground: "#CECFCD",
   grey2: "#f6f5fa",
   grey3: "#efefef",
-  gray4: "#B4B5B5",
+  gray2: "#B4B5B5",
+  gray3:"#9e9e9e",
   red: "red",
   lightGray:"#ccc",
-  fund:'#0A2342'
+  fund:'#0A2342',
+  green3:"#00b471"
 };
 
 export const Sizes = {
