@@ -9,18 +9,18 @@ export const SCREEN_HEIGHT = height;
 
 
 export const Colors = {
-  white: "#ffffff",
+  white: "#fff",
   black: "#000",
+  fadeblack:"#555",
   primary: "#063A4F",
   primary2: "#40196D",
   sky: "#F1FAF9",
   orange: "#ff7040",
   secondary: "#00caf2",
-  green: "#47cc49",
-  green2: "#038654",
   gray: "#EFF2F7",
   chocolate: "#5d5c6c",
   chocolateBackground: "#CECFCD",
+<<<<<<< Updated upstream
   grey2: "#f6f5fa",
   grey3: "#efefef",
   gray2: "#B4B5B5",
@@ -29,6 +29,31 @@ export const Colors = {
   lightGray:"#ccc",
   fund:'#0A2342',
   green3:"#00b471"
+=======
+  grey2: "#f7f7fd",
+  grey3: "#d3d3d3a4",
+  gray4: "#B4B5B5",
+  gray5:"#838282d4",
+  gray6:"#d8d7d765",
+  gray7:"#7e7d7d",
+  gray8:"#f0f2f5",
+  gray9:"#f4f6f8",
+  gray10:"#999",
+  red: "#eff7fa",
+  lightGray:"#ccc",
+  fund:'#0A2342',
+  green: "#47cc49",
+  green2: "#038654",
+  green3:'#4CAF50',
+  green4:'#04b471',
+  green5:"#c1f5cd59",
+  green6:'#00c32a33',
+  green7:"#00a86b",
+  green8:"#00b471",
+  green9:"#e6f7f2",
+  green10:'#edf8f5'
+  
+>>>>>>> Stashed changes
 };
 
 export const Sizes = {
@@ -65,6 +90,11 @@ export const Sizes = {
   body4: screenHeight * 0.017,
   body5: screenHeight * 0.015,
   body6: screenHeight * 0.01,
+<<<<<<< Updated upstream
+=======
+  body7:screenHeight * 0.018,
+  body8:screenHeight* 0.018,
+>>>>>>> Stashed changes
   intro: screenHeight * 0.04,
   tinyText: screenHeight * 0.012,
 
@@ -144,6 +174,12 @@ export const FONTS = {
   },
   body2c: {
     fontFamily: "Montserrat-Regular",
+    fontSize: Sizes.body2 * 1.2,
+    lineHeight: 30,
+    color:"white",
+  },
+  body2d: {
+    fontFamily: "Montserrat-Regular",
     fontSize: Sizes.body2 * 1.3,
     lineHeight: 30,
   },
@@ -162,6 +198,16 @@ export const FONTS = {
     fontSize: Sizes.body3b,
     lineHeight: 18,
   },
+  body3c: {
+    fontFamily: "Montserrat-Medium",
+    fontSize: 16,
+    color:Colors.black
+  },
+  body3d: {
+    fontFamily: "Montserrat-Medium",
+    fontSize: 16,
+    color:Colors.green4,
+  },
   body4: {
     fontFamily: "Montserrat-Regular",
     fontSize: Sizes.body4,
@@ -170,13 +216,69 @@ export const FONTS = {
   body5: {
     fontFamily: "Montserrat-Regular",
     fontSize: Sizes.body5,
+<<<<<<< Updated upstream
     lineHeight: 18,
+=======
+    lineHeight:18,
+    color:Colors.gray5,
+    fontWeight:"300"
+>>>>>>> Stashed changes
   },
   body6: {
     fontFamily: "Montserrat-Regular",
     fontSize: Sizes.body6 * 1.2,
     lineHeight: 18,
   },
+<<<<<<< Updated upstream
+=======
+  body6a: {
+    fontFamily: "Montserrat-Regular",
+    fontSize: Sizes.body6 * 1.2,
+    lineHeight: 18,
+    color:Colors.green4
+  },
+  body7: {
+    fontFamily: "Montserrat-Regular",
+    fontSize: Sizes.body7,
+    lineHeight: 18,
+    color: Colors.gray5
+  },
+  body7a: {
+    fontFamily: "Montserrat-Regular",
+    fontSize: Sizes.body7 * 1.05,
+    lineHeight: 18,
+    color: "black",
+    fontWeight:"300"
+  },
+  body8: {
+    fontFamily: "Montserrat-Regular",
+    fontSize: Sizes.body4,
+    lineHeight: 18,
+    color: Colors.black,
+    fontWeight:"300"
+  },
+  body9: {
+    fontFamily: "Montserrat-Regular",
+    fontSize: Sizes.body8,
+    lineHeight: 18,
+    color: Colors.black,
+    fontWeight:"400"
+  },
+  body10: {
+    fontFamily: "Montserrat-Regular",
+    fontSize: Sizes.body4,
+    lineHeight: 18,
+    color: Colors.white,
+    fontWeight:"300"
+  },
+  body11:{
+    fontFamily: "Montserrat-Regular",
+    fontSize:12,
+    fontWeight:'300',
+    color:'grey',
+    lineHeight:30
+    },
+>>>>>>> Stashed changes
 };
 
 const appTheme = [Colors, Sizes];

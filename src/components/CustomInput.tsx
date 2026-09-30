@@ -35,7 +35,7 @@ const CustomInput = ({
   secureTextEntry = false,
   inputStyle,
   containerStyle,
-  error,iconName
+  error,iconName,
 }: Props) => {
 
     const [show, setShow] = React.useState(false);
@@ -57,7 +57,12 @@ const CustomInput = ({
           onChangeText={onChangeText}
           placeholder={placeholder}
           secureTextEntry={secure && !show}
+<<<<<<< Updated upstream
           placeholderTextColor={Colors.black}
+=======
+          placeholderTextColor={Colors.gray5}
+          
+>>>>>>> Stashed changes
         />
         {secure && (
           <TouchableOpacity activeOpacity={0.7} onPress={() => setShow(!show)}>
