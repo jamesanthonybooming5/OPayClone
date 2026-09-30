@@ -4,16 +4,12 @@ import { Colors,Sizes,FONTS,SCREEN_HEIGHT,SCREEN_WIDTH } from "./Theme";
 const general = StyleSheet.create({
   container: {
     flex: 1,
-<<<<<<< Updated upstream
-    backgroundColor: Colors.white,
-=======
   backgroundColor: Colors.gray9,
     
   },
    page: {
     flex: 1,
     backgroundColor: Colors.fund,
->>>>>>> Stashed changes
   },
   centered: {
     flex: 1,
@@ -56,15 +52,9 @@ const general = StyleSheet.create({
     backgroundColor: Colors.sky,
   },
   label: {
-<<<<<<< Updated upstream
-    fontSize: SCREEN_WIDTH * 0.035,
-    color: Colors.lightGray,
-    marginBottom: SCREEN_HEIGHT * 0.008,
-=======
     fontSize: SCREEN_WIDTH * 0.045,
     color: Colors.black,
     marginBottom: SCREEN_HEIGHT * 0.020,
->>>>>>> Stashed changes
   },
   textInput: {
     borderWidth: 1,
@@ -86,18 +76,11 @@ const general = StyleSheet.create({
   inputWrapper: {
     flexDirection: "row",
     alignItems: "center",
-<<<<<<< Updated upstream
-    borderColor: Colors.black,
-    borderRadius: SCREEN_WIDTH * 0.02,
-    paddingHorizontal: SCREEN_WIDTH * 0.00,
-    backgroundColor: Colors.lightGray,
-=======
     borderRadius: SCREEN_WIDTH * 0.01,
     backgroundColor:"#f7f7fd",
     height: SCREEN_WIDTH * 0.1,
     paddingHorizontal:SCREEN_WIDTH * 0.02,
     justifyContent:"space-between"
->>>>>>> Stashed changes
   },
   profile: {
     width: SCREEN_WIDTH * 0.11,
@@ -107,13 +90,6 @@ const general = StyleSheet.create({
     marginVertical: SCREEN_HEIGHT * 0.02,
   },
   row:{
-<<<<<<< Updated upstream
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-  },
-boldText:{ ...FONTS.h3, marginTop: SCREEN_HEIGHT * 0.02 },
-=======
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-evenly",
@@ -140,7 +116,6 @@ boldText:{ ...FONTS.h3, marginTop: SCREEN_HEIGHT * 0.02 },
           
   },
 boldText:{ ...FONTS.body1, marginTop: SCREEN_HEIGHT * 0.01 },
->>>>>>> Stashed changes
 box:{
   width:SCREEN_WIDTH *0.900,
   height:SCREEN_HEIGHT*0.330,

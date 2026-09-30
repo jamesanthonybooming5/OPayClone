@@ -3,12 +3,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationIndependentTree } from "@react-navigation/native";
-<<<<<<< Updated upstream
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
-import Landing from "../Opay/Landing";
-import { Colors } from "../constants/Theme";
-
-=======
 import {FontAwesome,MaterialCommunityIcons,Ionicons,AntDesign} from "@expo/vector-icons";
 
 import HomeScreen from "../screens/Bottomtab/HomeScreen";
@@ -57,7 +51,6 @@ import Avaiable from "../Opay/Available";
 import Access from "../Opay/Access";
 import SMS from "../Opay/SMS";
 import More from "../Opay/More";
->>>>>>> Stashed changes
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -72,8 +65,6 @@ export default function RootNavigator() {
               component={BottomTab}
               options={{ headerShown: false }}
             />
-<<<<<<< Updated upstream
-=======
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Alert" component={Alert}/>
             <Stack.Screen name="SignUp" component={SignUp} />
@@ -112,7 +103,6 @@ export default function RootNavigator() {
             <Stack.Screen name="SMS" component={SMS} />
             <Stack.Screen name="More" component={More} />
             
->>>>>>> Stashed changes
           </Stack.Navigator>
         </NavigationContainer>
       </NavigationIndependentTree>
@@ -131,15 +121,6 @@ export function BottomTab() {
         paddingBottom:8
       }
     }}>
-<<<<<<< Updated upstream
-      <Tab.Screen name="Home" component={Landing} 
-      options={{
-        tabBarIcon:({color,size,focused})=>
-      (<FontAwesome6 name={focused? "opera":"opera"} size={size} color={color} />
-        )
-      }}/>
-      
-=======
       <Tab.Screen name="Home" component={Landing} options={{
         tabBarIcon:({color,size}) =>
         ( <FontAwesome name="opera" size={size||1} color={color} />)
@@ -165,7 +146,6 @@ export function BottomTab() {
           
         ),
       }}/>
->>>>>>> Stashed changes
     </Tab.Navigator>
   );
 }

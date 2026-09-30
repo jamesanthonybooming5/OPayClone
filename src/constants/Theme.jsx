@@ -20,16 +20,6 @@ export const Colors = {
   gray: "#EFF2F7",
   chocolate: "#5d5c6c",
   chocolateBackground: "#CECFCD",
-<<<<<<< Updated upstream
-  grey2: "#f6f5fa",
-  grey3: "#efefef",
-  gray2: "#B4B5B5",
-  gray3:"#9e9e9e",
-  red: "red",
-  lightGray:"#ccc",
-  fund:'#0A2342',
-  green3:"#00b471"
-=======
   grey2: "#f7f7fd",
   grey3: "#d3d3d3a4",
   gray4: "#B4B5B5",
@@ -53,7 +43,6 @@ export const Colors = {
   green9:"#e6f7f2",
   green10:'#edf8f5'
   
->>>>>>> Stashed changes
 };
 
 export const Sizes = {
@@ -90,11 +79,8 @@ export const Sizes = {
   body4: screenHeight * 0.017,
   body5: screenHeight * 0.015,
   body6: screenHeight * 0.01,
-<<<<<<< Updated upstream
-=======
   body7:screenHeight * 0.018,
   body8:screenHeight* 0.018,
->>>>>>> Stashed changes
   intro: screenHeight * 0.04,
   tinyText: screenHeight * 0.012,
 
@@ -216,21 +202,15 @@ export const FONTS = {
   body5: {
     fontFamily: "Montserrat-Regular",
     fontSize: Sizes.body5,
-<<<<<<< Updated upstream
-    lineHeight: 18,
-=======
     lineHeight:18,
     color:Colors.gray5,
     fontWeight:"300"
->>>>>>> Stashed changes
   },
   body6: {
     fontFamily: "Montserrat-Regular",
     fontSize: Sizes.body6 * 1.2,
     lineHeight: 18,
   },
-<<<<<<< Updated upstream
-=======
   body6a: {
     fontFamily: "Montserrat-Regular",
     fontSize: Sizes.body6 * 1.2,
@@ -278,7 +258,6 @@ export const FONTS = {
     color:'grey',
     lineHeight:30
     },
->>>>>>> Stashed changes
 };
 
 const appTheme = [Colors, Sizes];
