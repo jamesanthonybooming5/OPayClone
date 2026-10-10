@@ -1,214 +1,261 @@
-import { View,Text,FlatList, StyleSheet,TouchableOpacity,ScrollView} from "react-native";
+import { View,Text,FlatList, StyleSheet,TouchableOpacity,ScrollView,Modal} from "react-native";
 import general from "../constants/General";
 import CustomHeading from "../components/CustomHeading";
 import { useNavigation } from "@react-navigation/native";
 import { FONTS,Colors } from "../constants/Theme";
 import {MaterialCommunityIcons,Feather,SimpleLineIcons,MaterialIcons,Octicons,Ionicons,} from "@expo/vector-icons"
+import { useState } from "react";
 
 const itemBar=[
-{name:'Login Settings',Icon:<Feather name="key" size={22} color="black" />,
+{id:"1",
+    name:'Login Settings',icon:<Feather name="key" size={22} color="black" />,
 screen:"LoginSet",
-arrow:<MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4}/>,
 },
-{name:'Payment settings',Icon:<SimpleLineIcons name="lock" size={22} color="black" />,
+{id:"2",
+    name:'Payment settings',icon:<SimpleLineIcons name="lock" size={22} color="black" />,
 screen:'PaymentSet',
-arrow:<MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />,
 },
-{name:'Saving Settings',Icon:<Feather name="hard-drive" size={22} color="black"/>,
+{id:"3",
+    name:'Saving Settings',icon:<Feather name="hard-drive" size={22} color="black"/>,
 screen:"SavingSet",
-arrow:<MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />,
 }]
 const itemBur=[
-{same:"Homepage Settings", acon:<Feather name="home" size={22} color="black" />,
-arrow:<MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />
+{id:"1",
+    name:"Homepage Settings", icon:<Feather name="home" size={22} color="black" />,
 },
-{same:"Secuity Questions",acon:<Octicons name="shield" size={22} color="black" />,
-arrow:<MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />
+{id:"2",
+    name:"Secuity Questions",icon:<Octicons name="shield" size={22} color="black" />,
 },
-{same:"SMS Alert Subscription",acon:<MaterialIcons name="chat" size={22} color="black" />,
+{id:"3",
+    name:"SMS Alert Subscription",icon:<MaterialIcons name="chat" size={22} color="black" />,
 screen:'SMS',
-arrow:<MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />
 },
-{same:"Access to Clipboard",acon:<MaterialCommunityIcons name="clipboard-text-multiple-outline" size={22} color="black" />,
+{id:"4",
+    name:"Access to Clipboard",icon:<MaterialCommunityIcons name="clipboard-text-multiple-outline" size={22} color="black" />,
 screen:"Access",
-arrow:<MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />
 },
-{same:"Themes", acon:<MaterialIcons name="brightness-6" size={22} color="black" />,
-arrow:<MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />
+{id:"5",
+    name:"Themes", icon:<MaterialIcons name="brightness-6" size={22} color="black" />,
 }
 ]
 
 export default function Setting () {
     const navigation = useNavigation();
+    const  [logoutModalVisible, setLogoutModalVisible] = useState(false);
     
     return(
         <View style={general.container}>
             <CustomHeading title={"Settings"}/>
             <ScrollView>  
-                 <View style={styles.Flat}>
-                     <FlatList 
+                <View style={styles.Flat}>
+                    <FlatList 
                      scrollEnabled={false}
-                            data={itemBar}
-                            renderItem={({item}) =>{
-                            return(
-                            <TouchableOpacity activeOpacity={0.9} 
-                            style={{
-                                width:"100%",
-                                height:40,
-                                paddingHorizontal:'4%',
-                                marginVertical:"2%",
-                                flexDirection:'row',
-                                justifyContent:"space-between",
-                                alignItems:'center',
-                                }} onPress={() => navigation.navigate(item.screen)}>
-                                <View style={{
-                                    flexDirection:"row",
-                                    gap:"10%",
-                                    }}
-                                >
-                                 <Text >{item.Icon}</Text>
-                                 <Text style={{
-                                    ...FONTS.body7,
-                                    color:"black",
-                                    fontWeight:"400"}}>{item.name}</Text>
-                                </View>
-                                 <Text style={{alignSelf:"flex-end"}}>{item.arrow}</Text>
-                            </TouchableOpacity>
-                        )}}/>
-                    </View>
+                     data={itemBar}
+                     renderItem={({item}) =>{
+                     return(
+                     <TouchableOpacity 
+                      activeOpacity={0.9} 
+                       style={styles.holder} 
+                        onPress={() => navigation.navigate(item.screen)}>
+                        <View style={styles.row}>
+                            <Text >{item.icon}</Text>
+                            <Text style={styles.name}>{item.name}</Text>
+                        </View>
+                        <MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />
+                     </TouchableOpacity>
+                    )}}/>
+                </View>
                     
-                    <View style={styles.Flat2}>
-                     <FlatList 
-                            scrollEnabled={false}
-                            data={itemBur}
-                            renderItem={({item,}) =>{
-                            return(
-                            <TouchableOpacity activeOpacity={0.9}
-                            style={{
-                                width:"100%",
-                                height:40,
-                                paddingHorizontal:'4%',
-                                marginVertical:"2%",
-                                flexDirection:'row',
-                                justifyContent:"space-between",
-                                alignItems:'center',
-                                }} onPress={() => navigation.navigate(item.screen)}>
-                                <View style={{
-                                    flexDirection:"row",
-                                    gap:"10%",
-                                    }}
-                                >
-                                 <Text >{item.acon}</Text>
-                                 <Text style={{
-                                    ...FONTS.body7,
-                                    color:"black",
-                                    fontWeight:"400"}}>{item.same}</Text>
-                                </View>
-                                 <Text style={{alignSelf:"flex-end"}}>{item.arrow}</Text>
-                            </TouchableOpacity>
-                        )}}/>
-                    </View>
+                <View style={styles.Flat}>
+                    <FlatList 
+                     scrollEnabled={false}
+                     data={itemBur}
+                     renderItem={({item,}) =>{
+                     return(
+                     <TouchableOpacity activeOpacity={0.9}
+                     style={styles.holder} 
+                     onPress={() => navigation.navigate(item.screen)}>
+                     <View style={styles.row}>
+                        <Text >{item.icon}</Text>
+                        <Text style={styles.name}>{item.name}</Text>
+                     </View>
+                     <MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />
+                     </TouchableOpacity>
+                    )}}/>
+                </View>
 
-              <TouchableOpacity activeOpacity={0.9} style={styles.Centre}>
-                    <View style={{
-                        flexDirection:"row",
-                        gap:"10%"
-                        }}>
+              <TouchableOpacity 
+                    activeOpacity={0.9} 
+                    style={styles.Centre}>
+                    <View style={styles.row}>
                         <Octicons name="shield-check" size={22} color="black" />
-                        <Text style={{
-                        ...FONTS.body7,
-                        color:"black",
-                        fontWeight:"400"}}>Security Center</Text>
+                        <Text style={styles.name}>Security Center</Text>
                     </View>
                     <MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />
               </TouchableOpacity>
 
-              <TouchableOpacity activeOpacity={0.9} style={styles.Centre}>
-                    <View style={{
-                        flexDirection:"row",
-                        gap:"9%"
-                    }}>
+              <TouchableOpacity 
+                 activeOpacity={0.9} 
+                 onPress={() => navigation.navigate("Close")}
+                 style={styles.Centre}>
+                 <View style={styles.row}>
                     <Ionicons name="power-sharp" size={22} color="black" />
-                    <Text style={{
-                        ...FONTS.body7,
-                        color:"black",
-                        fontWeight:"400"}}>Close Account</Text>
+                    <Text style={styles.name}>Close Account</Text>
                     </View>
                     <MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />
               </TouchableOpacity>
 
-               <TouchableOpacity activeOpacity={0.9} style={styles.Centre}>
-                    <View style={{
-                        flexDirection:"row",
-                        gap:"12%",
-                        alignItems:"center"
-                    }}>
-                    <Feather name="alert-circle" size={22} color="black" />
-                    <Text style={{
-                        ...FONTS.body7,
-                        color:"black",
-                        fontWeight:"400"}}>About</Text>
+               <TouchableOpacity 
+                 activeOpacity={0.9} 
+                 style={styles.Centre}
+                 onPress={() => navigation.navigate("About")}>
+                    <View style={styles.row}>
+                        <Feather name="alert-circle" size={22} color="black" />
+                        <Text style={styles.name}>About</Text>
                     </View>
-                    <View style={{
-                        flexDirection:"row",
-                        alignItems:"center"
-                    }}>
+                    <View style={styles.about}>
                         <Text>Version 7.23.1</Text>
                         <MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />
                     </View>
               </TouchableOpacity>
 
-              <TouchableOpacity activeOpacity={0.9}
-                 style={{
-                 width:"89%",  
-                 marginHorizontal:"5%",
-                 paddingHorizontal:"4%",
-                 borderRadius:"4%",
-                 flex:1,
-                 backgroundColor:"white",
-                 paddingVertical:"4%",
-                 marginTop:"2%",
-                 marginBottom:"10%"
-                  }}>
-                <Text style={{
-                ...FONTS.body3a,
-                textAlign:"center"
-                }}>Sign Out</Text>
+              <TouchableOpacity 
+                activeOpacity={0.9}
+                onPress={()=> setLogoutModalVisible(true)}
+                 style={styles.footer}>
+                <Text style={styles.name}>Sign Out</Text>
               </TouchableOpacity>
+              
+              <Modal 
+                transparent={true}
+                visible={logoutModalVisible}
+                animationType="fade"
+                onRequestClose={() => setLogoutModalVisible(false)}>
+                    <View style={styles.modaloverlay}> 
+                        <View style={styles.modalcontent}>
+                         <Text style={styles.modalbody}>Are you sure you want to sign out of OPay? </Text>
+                         <View style={styles.modalbutton}>
+                                <TouchableOpacity
+                                    activeOpacity={0.9} 
+                                    style={styles.nobutton}
+                                    onPress={() => setLogoutModalVisible(false)}>
+                                    <Text style={styles.notext}>No</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    activeOpacity={0.9}
+                                    style={styles.yesbutton}
+                                    onPress={()=> {setLogoutModalVisible(false); navigation.reset({index:0, routes:[{name:"LoginPage"}]})}}>
+                                    <Text style={styles.yestext}>Yes</Text>
+                            </TouchableOpacity>
+                         </View>
+                        </View>
+                    </View>
+                </Modal>
           </ScrollView>
+
         </View>
     )};
 
     const styles = StyleSheet.create ({
-        Flat:{
-        width:"89%",
-        flex:1,
+    Flat:{
+        flexDirection:"row",
+        paddingHorizontal:"4%",
         backgroundColor:"white",
-        borderRadius:"4%",
+        borderRadius:10,
         marginVertical:"3%",
         marginHorizontal:"5%",
-        paddingVertical:"1%"
-        },
-        Centre:{
+    },
+    
+    holder:{
+        paddingVertical:"5%",
+        flexDirection:'row',
+        justifyContent:"space-between",
+        alignItems:"center",
+    },
+    row:{
+       flexDirection:"row",
+        alignItems:"center",
+        gap:"5%",
+        flex:1
+    },
+    name:{
+        ...FONTS.body7,
+        color:"black",
+    },
+    Centre:{
         flexDirection:"row",
         alignItems:"center",
         justifyContent:"space-between",
-        width:"89%",
         marginHorizontal:"5%",
         paddingHorizontal:"4%",
-        borderRadius:"4%",
-        flex:1,
+        borderRadius:10,
         backgroundColor:"white",
         paddingVertical:"3%",
-        marginVertical:"2%"
-        },
-        Flat2:{
-        width:"89%",
+        marginVertical:"3%",
+    },
+    about:{
+        alignSelf:"flex-end",
+        flexDirection:"row",
+        alignItems:"center"
+    },
+    footer:{  
+        marginHorizontal:"5%",
+        paddingHorizontal:"4%",
+        borderRadius:10,
         flex:1,
         backgroundColor:"white",
-        borderRadius:"4%",
-        marginVertical:"2%",
-        marginHorizontal:"5%",
-        paddingVertical:"1%"
-        },
-    });
+        paddingVertical:"4%",
+        marginTop:"2%",
+        marginBottom:"10%",
+        justifyContent:"center",
+        alignItems:"center"
+    },
+    modaloverlay:{
+        flex:1,
+        justifyContent:"center",
+        alignItems:"center",
+        backgroundColor:"rgba(5, 5, 5, 0.44)"
+    },
+    modalcontent:{
+        width:"90%",
+        backgroundColor:"white",
+        borderRadius:12,
+        padding:20,
+        alignItems:"center"
+    },
+    modalbody:{
+        fontSize:13,
+        color:Colors.fadeblack,
+        textAlign:"center",
+        marginBottom:20
+    },
+    modalbutton:{
+        flexDirection:"row",
+        width:"100%",
+        justifyContent:"space-between",
+    },
+    nobutton:{
+        flex:1,
+        paddingVertical:"5%",
+        borderRadius:"17%",
+        alignItems:"center",
+        marginHorizontal:"2%",
+        backgroundColor:Colors.green9,
+    },
+    notext:{
+        fontSize:15,
+        color:Colors.green14
+    },
+    yesbutton:{
+        flex:1,
+        paddingVertical:"5%",
+        borderRadius:"17%",
+        alignItems:"center",
+        marginHorizontal:"2",
+        backgroundColor:Colors.green7
+    },
+    yestext:{
+        fontSize:15,
+        color:"white"
+    }
+});

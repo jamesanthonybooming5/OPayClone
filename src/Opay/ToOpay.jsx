@@ -1,6 +1,6 @@
 import {View,Text,StyleSheet,ScrollView,TouchableOpacity,FlatList,TextInput} from 'react-native';
 import general from '../constants/General';
-import {MaterialIcons,MaterialCommunityIcons,Ionicons,FontAwesome6} from '@expo/vector-icons';
+import {MaterialIcons,Ionicons,FontAwesome6,MaterialCommunityIcons} from '@expo/vector-icons';
 import { StatusBar } from 'react-native';
 import { Colors,FONTS } from '../constants/Theme';
 import { useNavigation } from '@react-navigation/native';
@@ -10,6 +10,7 @@ import { SCREEN_WIDTH } from '../constants/Theme';
 export default function ToOpay () {
     const [text,setText] = useState ("");
     const navigation=useNavigation();
+    const [isFocused, setIsFocused] = useState(false); 
     const[activeTab, setActiveTab] = useState ("Recents");
 
     const itemBar=[
@@ -29,10 +30,7 @@ export default function ToOpay () {
         type:"Recents",
         name:'ABCDEFGHI JKLMNO PQURST',Icon:<FontAwesome6 name="user-large" size={20} color="white" />,
     price:'812 345 6789',},
-    {id:"5",
-        type:"Recents",
-        name:'ABCDEFGHI JKLMNO PQURST',Icon:<FontAwesome6 name="user-large" size={20} color="white" />,
-    price:'812 345 6789',},
+    
     ]
 
     const filteredData = itemBar.filter(item => item.type === activeTab);
@@ -53,31 +51,42 @@ export default function ToOpay () {
                  <View style={styles.freecontainer}>
                     <FontAwesome6 name="naira-sign" size={10} color="white" />
                  </View>
-                 <Text style={FONTS.body3}>Instant, Zero Issues, Free</Text>
+                 <Text style={styles.zero}>Instant, Zero Issues, Free</Text>
              </View>
 
              <View style={styles.Input}>
                  <Text style={general.label}>Recipient Account</Text>
-                 <View style={styles.inputwrapper}>
+                 <View style={[isFocused? styles.inactivewrapper : styles.inputwrapper]}>
                      <TextInput 
                         value={text}
                         onChangeText={setText}
                         placeholder='Phone No./OPay Account No./Name'
-                        secureTextEntry={false}
+                        keyboardType="numbers-and-punctuation"
+                        returnKeyType="done"
+                        onFocus={()=>setIsFocused(true)}
                         style={styles.inputtext}/>
 
-                        <TouchableOpacity 
-                        activeOpacity={0.9}
-                        onPress={()=>navigation.navigate('')}>
-                        <MaterialCommunityIcons name={"line-scan"} color={Colors.gray4} size={20}/>
+                       {text.length > 0 ? (
+                        <TouchableOpacity
+                         activeOpacity={0.9}
+                         onLongPress={()=> setText("")}>
+                            <Ionicons name="close-circle" size={20} color={Colors.lightGray}/>
                         </TouchableOpacity>
+                       ) : (
+                        <TouchableOpacity
+                         activeOpacity={0.9}
+                         onLonPress={()=> setText("")}>
+                            <MaterialCommunityIcons name="line-scan" size={20} color={Colors.lightGray}/>
+                        </TouchableOpacity>
+                       )}
                  </View>
                  <Text style={FONTS.body7}>Don't know the recipient's Opay account number ?</Text>
                  
                  <TouchableOpacity
                  style={styles.ask}
+                 onPress={()=>navigation.navigate('')}
                  activeOpacity={0.9}>
-                 <Text style={FONTS.body4}>Ask them</Text> 
+                 <Text style={styles.couple}>Ask them</Text> 
                  <Ionicons name="chevron-forward" size={18} color={Colors.green4} />
                  </TouchableOpacity>
              </View>
@@ -90,8 +99,10 @@ export default function ToOpay () {
                             <TouchableOpacity
                             activeOpacity={0.9}
                             key={tab}
-                            onPress={() => setActiveTab(tab)}>
+                            onPress={() => setActiveTab(tab)}
+                            style={styles.tabbutton}>
                             <Text style={[styles.tabtext, isActive && styles.activeTabText]}>{tab}</Text>
+                            {isActive && <View style={styles.tabindicator}/>}
                             </TouchableOpacity>
                         )
                     })}
@@ -99,6 +110,7 @@ export default function ToOpay () {
 
                  <FlatList
                         scrollEnabled={false}
+                        style={styles.border}
                         data={filteredData}
                         keyExtractor={(item)=> item.id}
                         renderItem={({item})=>{
@@ -113,11 +125,13 @@ export default function ToOpay () {
                                     <Text style={FONTS.body5}>{item.price}</Text>
                                 </View>
                             </TouchableOpacity>
-                        )}}
+                        );}}
                     />
                     <TouchableOpacity 
                      activeOpacity={0.9} 
-                     style={styles.view}>
+                     style={styles.view}
+                     onPress={()=>navigation.navigate("Beneficiaries")}>
+                     
                         <Text style={FONTS.body5}>View All</Text>
                         <MaterialIcons name="keyboard-arrow-right" size={20} color={Colors.gray4} />
                     </TouchableOpacity>
@@ -168,6 +182,10 @@ const styles=StyleSheet.create ({
         alignItems:'center',
         justifyContent:"center"
     },
+    zero:{
+        ...FONTS.body3,
+        color:Colors.green7
+    },
     Free:{
         width:"100%",
         flex:1,
@@ -189,6 +207,18 @@ const styles=StyleSheet.create ({
         justifyContent:"space-between",
         marginBottom:"3%"
     },
+    inactivewrapper:{
+        flexDirection: "row",
+        alignItems: "center",
+        borderRadius: SCREEN_WIDTH * 0.01,
+        backgroundColor:"#f7f7fd",
+        height: SCREEN_WIDTH * 0.1,
+        paddingHorizontal:SCREEN_WIDTH * 0.02,
+        justifyContent:"space-between",
+        marginBottom:"3%",
+        borderWidth:1,
+        borderColor:Colors.green6
+    },
     Input:{
         width:"100%",
         borderRadius:"3%",
@@ -198,11 +228,14 @@ const styles=StyleSheet.create ({
         marginVertical:"2%",
         paddingVertical:"4%",
     },
+    couple:{
+        ...FONTS.body4,
+        color:Colors.green7},
     inputtext:{
         fontSize:14,
-        fontWeight:"300",
         width:"80%",
-        marginLeft:"2%"
+        marginLeft:"2%",
+        fontWeight:"300"
     },
     tabcon:{
         paddingVertical:"4%",
@@ -213,18 +246,32 @@ const styles=StyleSheet.create ({
    tabholder:{
         flexDirection:"row",
         justifyContent:"space-around",
-        borderBottomWidth:1,
-        paddingBottom:"5%",
-        borderColor:Colors.gray
+        paddingHorizontal:"4%"
+   },
+   tabbutton:{
+    paddingVertical:"5%",
+    position:"relative"
    },
     tabtext:{
         fontSize:15,
-        color:Colors.fadeblack
+        color:Colors.offblack,
    },
     activeTabText:{
-        color:Colors.green8,
-        fontSize:15
+        color:Colors.green7,
+        fontSize:15,
    },
+   tabindicator:{
+        position:"absolute",
+        bottom:0,
+        left:17,
+        right:17,
+        height:2,
+        backgroundColor:Colors.green7
+    },
+   border:{
+    borderTopWidth:1,
+    borderColor:Colors.gray
+    },
    accounts:{
         width:370,
         height:50,
@@ -234,7 +281,7 @@ const styles=StyleSheet.create ({
         justifyContent:'flex-start',
         gap:'5%',
         alignItems:'center',
-        paddingVertical:"10%"
+        paddingVertical:"10%",
     },
     textholder:{
         alignItems:'flex-start',
@@ -272,7 +319,7 @@ const styles=StyleSheet.create ({
         width:40,
         height:40,
         borderRadius:20,
-        backgroundColor:Colors.gray10,
+        backgroundColor:Colors.grey3,
         justifyContent:"center",
         alignItems:'center'
     },
@@ -283,7 +330,7 @@ const styles=StyleSheet.create ({
         borderRadius:20,
         backgroundColor:Colors.grey2,
         flexDirection:"row",
-        marginBottom:5,
+        marginBottom:2,
         alignItems:"center",
         justifyContent:"center"
     },

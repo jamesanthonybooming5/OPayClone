@@ -11,20 +11,11 @@ import {
 import { SCREEN_HEIGHT, SCREEN_WIDTH, Colors, Sizes } from '../constants/Theme'
 import general from "../constants/General";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
-type Props = {
-  label?: string;
-  value: string;
-  onChangeText: (text: string) => void;
-  placeholder?: string;
-  secureTextEntry?: boolean;
-  inputStyle?: TextStyle;
-  containerStyle?: ViewStyle;
-  error?: string;
-  iconName?: string;
-  secure?:boolean
-};
+
 
 const CustomInput = ({
   label,
@@ -32,45 +23,41 @@ const CustomInput = ({
   onChangeText,
   placeholder,
   secure,
-  secureTextEntry = false,
+  secureTextEntry = true,
   inputStyle,
   containerStyle,
   error,iconName,
-}: Props) => {
+}) => {
 
-    const [show, setShow] = React.useState(false);
+    const [show, setShow] = useState(false);
+    const [isFocused, setIsFocused] = useState (false);
   return (
     <View style={[styles.container, containerStyle]}>
       {label && <Text style={general.label}>{label}</Text>}
-      <View style={general.inputWrapper}>
+      <View  style={[isFocused? general.inputWrapper : general.inactiveWrapper]}>
         {iconName && (
           <MaterialIcons
-            name={iconName as any}
+            name={iconName}
             size={SCREEN_WIDTH * 0.06}
             color={Colors.black}
             style={general.icon}
           />
         )}
-        <TextInput
+          <TextInput
           style={[general.input, inputStyle]}
           value={value}
           onChangeText={onChangeText}
           placeholder={placeholder}
-          secureTextEntry={secure && !show}
-<<<<<<< Updated upstream
-          placeholderTextColor={Colors.black}
-=======
+          secureTextEntry={secureTextEntry && !show}
           placeholderTextColor={Colors.gray5}
-          
->>>>>>> Stashed changes
+          keyboardType="numeric"
+          returnKeyType="done"
+          onFocus={()=> setIsFocused(true)}
+          onBlur={()=> setIsFocused(false)}
         />
-        {secure && (
+        {secureTextEntry && value?.length > 0 && (
           <TouchableOpacity activeOpacity={0.7} onPress={() => setShow(!show)}>
-            <Ionicons
-              name={show ? "eye-sharp" : "eye-off"}
-              color={Colors.black}
-              size={Sizes.body2}
-            />
+            <MaterialCommunityIcons name={show ? "eye":"eye-closed"} size={20} color="black" />
           </TouchableOpacity>
         )}
       </View>

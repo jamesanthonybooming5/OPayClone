@@ -63,7 +63,9 @@ export default function Landing  () {
                          activeOpacity={0.9}>
                           <Ionicons name="shield-checkmark-sharp" size={18} color="white" />
                           <Text style={FONTS.body10}>Avaiable Balance</Text>
-                          <TouchableOpacity activeOpacity={0.9} onPress={()=>setIsEyeOpen(!isEyeOpen)}><Ionicons name={isEyeOpen? "eye-off-outline": "eye"} size={18} color="white" /></TouchableOpacity>
+                          <TouchableOpacity 
+                           activeOpacity={0.9} 
+                           onPress={()=>setIsEyeOpen(!isEyeOpen)}><Ionicons name={isEyeOpen? "eye-off-outline": "eye"} size={18} color="white" /></TouchableOpacity>
                      </TouchableOpacity>
                      <TouchableOpacity
                          activeOpacity={0.9} 
@@ -173,8 +175,9 @@ export default function Landing  () {
                                 <View style={[styles.iconslot,{width:"100%",height:"50%"}]}>{item.icon[0]}</View>
                                 <View style={styles.iconslot}>{item.icon[1]}</View>
                                 <View style={styles.iconslot}>{item.icon[2]}</View>
-                            </View>
-                        </View>):(<View style={styles.icon}>{item.icon}</View>)}
+                            </View> 
+                            </View>):
+                            (<View style={styles.icon}>{item.icon}</View>)}
                         <Text style={styles.small}>{item.name}</Text>
                     </TouchableOpacity>
                     );

@@ -4,11 +4,12 @@ import CustomHeading from "../components/CustomHeading";
 import { Colors, FONTS } from "../constants/Theme";
 import {MaterialIcons,Ionicons,FontAwesome6,MaterialCommunityIcons} from "@expo/vector-icons";
 import { useState } from "react";
-import { loop } from "react-native/types_generated/Libraries/Animated/AnimatedExports";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Avaiable () {
     const [isEyeOpen,setIsEyeOpen] = useState (false);
     const secretText="****";
+    const navigation = useNavigation ();
     return(
         <View style={general.container}>
             <CustomHeading title={"Available Balance Details"}/>
@@ -50,7 +51,7 @@ export default function Avaiable () {
                    <TouchableOpacity 
                         style={styles.turnholder}
                         activeOpacity={0.9}
-                        onPress={()=>navigation.navigate()}>
+                        onPress={()=> navigation.navigate("AutoSave")}>
                         <Text style={styles.turn}>Turn on your Autosave and start making money every day on OWealth</Text>
                         <MaterialIcons name="keyboard-arrow-right" size={20} color={Colors.gray4} />
                    </TouchableOpacity>
@@ -78,9 +79,9 @@ export default function Avaiable () {
                    </TouchableOpacity>
                 </View>
                 <View style={styles.footer}>
-                    <Text style={styles.lincense}>Licensed by the</Text>
+                    <Text style={FONTS.body6}>Licensed by the</Text>
                     <Text style={styles.cbn}>CBN</Text>
-                    <Text style={styles.lincense}>and insured by the</Text>
+                    <Text style={FONTS.body6}>and insured by the</Text>
                     <View>
                     <Text style={styles.ndic}>NDIC</Text>
                     <Text style={styles.last}>Nigerian Deposit Insurance Corporation</Text>
@@ -202,23 +203,17 @@ const styles=StyleSheet.create({
         justifyContent:"center",
         marginVertical:"5%"
     },
-    lincense:{
-        ...FONTS.body4,
-        color:"black"
-    },
     cbn:{
         fontWeight:"500",
         color:"#040476",
         fontSize:15
     },
     ndic:{
-        ...FONTS.h2,
         color:"#040476",
         fontWeight:"700",
         fontSize:17
     },
     last:{
-        ...FONTS.body6,
         fontSize:2,
         lineHeight:2,
         width:"100%"

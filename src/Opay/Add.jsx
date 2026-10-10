@@ -3,7 +3,7 @@ import general from '../constants/General';
 import { FONTS,Colors } from '../constants/Theme';
 import CustomHeading from '../components/CustomHeading';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons,MaterialCommunityIcons,Octicons,SimpleLineIcons} from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Add () {
@@ -15,11 +15,11 @@ export default function Add () {
             <ScrollView style={{paddingHorizontal:"4%"}}>
                 <TouchableOpacity 
                  activeOpacity={0.9}
-                 onPress={()=> navigation.navigate('')}
+                 onPress={()=> navigation.navigate('Bank')}
                  style={styles.Bank}>
                  <View style={styles.holder}>
                      <View style={styles.container}>
-                     <FontAwesome name="opera" size={25} color="#04b471" />
+                     <MaterialCommunityIcons name="bank-outline" size={27} color="black" />
                      </View>
                      <View style={{marginBottom:5}}>
                          <View style={styles.top}>
@@ -39,6 +39,22 @@ export default function Add () {
                     <Text style={styles.color}>OR</Text>
                     <View style={styles.line}></View>
                 </View>
+                
+                 <TouchableOpacity
+                 onPress={()=> navigation.navigate('')}
+                 activeOpacity={0.9} 
+                 style={styles.Cash}>
+                 <View style={styles.holder}>
+                     <View style={styles.container}>
+                     <MaterialCommunityIcons name="card-plus-outline" size={27} color="black" />
+                     </View>
+                     <View style={{maxWidth:"80%"}}>
+                     <Text style={styles.name}>Auto Top--Up(Powered by NIBSS)</Text>
+                     <Text style={FONTS.body5}>Never worry about your balance. We'll top up your wallet automatically</Text>
+                     </View>
+                 </View>
+                 <MaterialIcons name="keyboard-arrow-right" size={24} color={Colors.gray5} />
+                </TouchableOpacity>
 
                 <TouchableOpacity 
                  activeOpacity={0.9}
@@ -46,7 +62,7 @@ export default function Add () {
                  style={styles.Cash}>
                  <View style={styles.holder}>
                      <View style={styles.container}>
-                     <FontAwesome name="opera" size={25} color="#04b471" />
+                     <MaterialCommunityIcons name="card-outline" size={27} color="black" />
                      </View>
                      <View style={styles.width}>
                      <View style={styles.top}>
@@ -63,11 +79,11 @@ export default function Add () {
 
                 <TouchableOpacity 
                  activeOpacity={0.9}
-                 onPress={()=> navigation.navigate('')}
+                 onPress={()=> navigation.navigate('TopUp')}
                  style={styles.Cash}>
                  <View style={styles.holder}>
                      <View style={styles.container}>
-                     <FontAwesome name="opera" size={25} color="#04b471" />
+                     <Octicons name="credit-card" size={27} color="black" />
                      </View>
                      <View style={styles.width}>
                      <View style={styles.top}>
@@ -83,12 +99,12 @@ export default function Add () {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                 onPress={()=> navigation.navigate('')}
+                 onPress={()=> navigation.navigate()}
                  activeOpacity={0.9} 
                  style={styles.Cash}>
                  <View style={styles.holder}>
                      <View style={styles.container}>
-                     <FontAwesome name="opera" size={25} color="#04b471" />
+                     <SimpleLineIcons name="screen-smartphone" size={27} color="black" />
                      </View>
                      <View>
                      <Text style={styles.name}>Bank USSD</Text>
@@ -104,7 +120,7 @@ export default function Add () {
                  style={styles.Cash}>
                   <View style={styles.holder}>
                      <View style={styles.container}>
-                     <FontAwesome name="opera" size={25} color="#04b471" />
+                     <MaterialIcons name="qr-code" size={27} color="black" />
                      </View>
                      <View>
                      <Text style={styles.name}>Scan my QR Code</Text>

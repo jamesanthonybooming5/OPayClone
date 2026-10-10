@@ -137,7 +137,7 @@ const filteredData = itemBar.filter(item => item.type === activeTab);
                 {showBanner && (
                     <View style={styles.banner}>
                         <View style={styles.bannerleft}>
-                            <Ionicons name="notifications-sharp" size={18} color={Colors.green8}/>
+                            <Ionicons name="notifications-sharp" size={18} color={Colors.green7}/>
                             <Text 
                             numberOfLines={2}
                             style={styles.bannertext}>Enable notifications to get the latest from OPay </Text>
@@ -179,7 +179,7 @@ const filteredData = itemBar.filter(item => item.type === activeTab);
                                     <Text style={styles.time}>{item.time}</Text>
                                     <View style={styles.viewrow}>
                                         <Text style={styles.view}>View</Text>
-                                        <Ionicons name="chevron-forward" size={18} color={Colors.green8}/>
+                                        <Ionicons name="chevron-forward" size={18} color={Colors.green7}/>
                                     </View>
                                 </View>
                         </TouchableOpacity>
@@ -214,7 +214,7 @@ const styles = StyleSheet.create ({
     color:Colors.fadeblack 
    },
    activeTabText:{
-   color:Colors.green8,
+   color:Colors.green7,
    },
    banner:{
     flexDirection:"row",
@@ -240,11 +240,11 @@ const styles = StyleSheet.create ({
    bannertext:{
     fontWeight:"300",
     fontSize:14,
-    color:Colors.green8,
+    color:Colors.green7,
     maxWidth:"80%"
    },
    turnbutton:{
-    backgroundColor:Colors.green8,
+    backgroundColor:Colors.green7,
     paddingHorizontal:"9%",
     paddingVertical:"5%",
     borderRadius:15
@@ -307,6 +307,6 @@ const styles = StyleSheet.create ({
   },
   view:{
     fontSize:12,
-    color:Colors.green8
+    color:Colors.green7
   }
 }) 

@@ -4,7 +4,7 @@ import { Colors,Sizes,FONTS,SCREEN_HEIGHT,SCREEN_WIDTH } from "./Theme";
 const general = StyleSheet.create({
   container: {
     flex: 1,
-  backgroundColor: Colors.gray9,
+  backgroundColor: Colors.grey2,
     
   },
    page: {
@@ -32,12 +32,13 @@ const general = StyleSheet.create({
     borderRadius: SCREEN_WIDTH * 0.07,
     alignItems: "center",
     marginTop: SCREEN_HEIGHT * 0.02,
+    justifyContent:"center"
 
   },
   buttonText: {
     color: Colors.white,
-    fontWeight:"light",
-    fontSize:13,
+    fontWeight:"300",
+    fontSize:15,
     lineHeight:SCREEN_HEIGHT *0.02
   },
   input: {
@@ -76,11 +77,22 @@ const general = StyleSheet.create({
   inputWrapper: {
     flexDirection: "row",
     alignItems: "center",
-    borderRadius: SCREEN_WIDTH * 0.01,
-    backgroundColor:"#f7f7fd",
-    height: SCREEN_WIDTH * 0.1,
+    borderRadius: SCREEN_WIDTH * 0.02,
+    backgroundColor:Colors.gray,
+    paddingVertical:"2%",
     paddingHorizontal:SCREEN_WIDTH * 0.02,
-    justifyContent:"space-between"
+    justifyContent:"space-between",
+    borderWidth:1,
+    borderColor:Colors.green7,
+  },
+  inactiveWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: SCREEN_WIDTH * 0.02,
+    backgroundColor:Colors.gray,
+    paddingVertical:"2%",
+    paddingHorizontal:SCREEN_WIDTH * 0.02,
+    justifyContent:"space-between",
   },
   profile: {
     width: SCREEN_WIDTH * 0.11,

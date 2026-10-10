@@ -4,42 +4,18 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationIndependentTree } from "@react-navigation/native";
 import {FontAwesome,MaterialCommunityIcons,Ionicons,AntDesign} from "@expo/vector-icons";
+import { Colors } from "../constants/Theme";
 
-import HomeScreen from "../screens/Bottomtab/HomeScreen";
-import SignUp from "../screens/Sign-Up";
-import Login from "../screens/Login";
-import Chart from "../screens/Bottomtab/Chart";
-import Settings from "../screens/Bottomtab/Settings";
-import Wallet from "../screens/Bottomtab/Wallet";
-import Profile from "../screens/Profile";
-import IntroScreen1 from "../screens/IntroScreen1";
-import Personal from "../screens/Personal";
-import VerifyCode from "../screens/VerifyCode1";
-import ResetPassword from "../screens/ResetPassword1";
-import ResetPassword2 from "../screens/Resetpassword2";
-import ResetPassword3 from "../screens/ResetPassword3";
-import Settings1 from "../screens/Settings1";
-import Settings2 from "../screens/Settings2";
-import Payment from "../screens/Payment";
-import Alert from '../pages/Alert';
-import Homepage from "../pages/Homepage";
-import Recieve from "../pages/Recieve";
-import Send from "../pages/Send";
-import Transaction from "../pages/Transaction";
-import CustomerSupport from '../pages/CustomerSupport';
-import Tv from '../pages/Tv';
-import Tvpayment from '../pages/Tvpayment';
-import CustomerChat from "../pages/CustomerChat";
 import Landing from "../Opay/Landing";
 import ToOpay from "../Opay/ToOpay";
 import User from "../Opay/User";
 import Add from "../Opay/Add";
 import Withdraw from "../Opay/Withdraw";
-import Home from "../Opay/Bottomtab/Home";
-import Rewards from "../Opay/Bottomtab/Rewards";
-import Finance from "../Opay/Bottomtab/Finance";
-import Card from "../Opay/Bottomtab/Card";
-import Me from "../Opay/Bottomtab/Me";
+import Home from "../Opay/Bottomtab.jsx/Home";
+import Rewards from "../Opay/Bottomtab.jsx/Rewards";
+import Finance from "../Opay/Bottomtab.jsx/Finance";
+import Card from "../Opay/Bottomtab.jsx/Card";
+import Me from "../Opay/Bottomtab.jsx/Me";
 import Account from "../Opay/Account";
 import Setting from "../Opay/Setting";
 import Airtime from "../Opay/Airtime";
@@ -51,6 +27,15 @@ import Avaiable from "../Opay/Available";
 import Access from "../Opay/Access";
 import SMS from "../Opay/SMS";
 import More from "../Opay/More";
+import Beneficiaries from "../Opay/Beneficiaries";
+import Bank from "../Opay/Bank";
+import TopUp from "../Opay/TopUp";
+import Auto from "../Opay/Auto";
+import Close from "../Opay/Close";
+import AutoSave from "../Opay/AutoSave";
+import LoginPage from "../Opay/LoginPage";
+import About from "../Opay/About";
+import Get from "../Opay/Get";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -59,33 +44,12 @@ export default function RootNavigator() {
     return (
       <NavigationIndependentTree>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="BottomTab" screenOptions={{headerShown: false}}>
+          <Stack.Navigator initialRouteName="LoginPage" screenOptions={{headerShown: false}}>
             <Stack.Screen
               name="BottomTab"
               component={BottomTab}
               options={{ headerShown: false }}
             />
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Alert" component={Alert}/>
-            <Stack.Screen name="SignUp" component={SignUp} />
-            <Stack.Screen name="IntroScreen1" component={IntroScreen1} />
-            <Stack.Screen name="VerifyCode" component={VerifyCode} />
-            <Stack.Screen name="ResetPassword" component={ResetPassword} />
-            <Stack.Screen name="ResetPassword2" component={ResetPassword2} />
-             <Stack.Screen name="ResetPassword3" component={ResetPassword3} />
-            <Stack.Screen name="Profile" component={Profile} />
-            <Stack.Screen name="Settings1" component={Settings1} />
-            <Stack.Screen name="Settings2" component={Settings2} />
-            <Stack.Screen name="Payment" component={Payment}/>
-            <Stack.Screen name='Personal' component={Personal}/>
-            <Stack.Screen name="Homepage" component={Homepage}/>
-            <Stack.Screen name="Recieve" component={Recieve}/>
-            <Stack.Screen name="Send" component={Send}/>
-            <Stack.Screen name="Transaction" component={Transaction}/>
-            <Stack.Screen name='CustomerSupport' component={CustomerSupport}/>
-            <Stack.Screen name='Tv' component={Tv}/>
-            <Stack.Screen name='Tvpayment' component={Tvpayment}/>
-            <Stack.Screen name="CustomerChat" component={CustomerChat}/>
 
             <Stack.Screen name="ToOpay" component={ToOpay} />
             <Stack.Screen name="Add" component={Add} />
@@ -102,6 +66,15 @@ export default function RootNavigator() {
             <Stack.Screen name="Access" component={Access}/>
             <Stack.Screen name="SMS" component={SMS} />
             <Stack.Screen name="More" component={More} />
+            <Stack.Screen name="Beneficiaries" component={Beneficiaries}/>
+            <Stack.Screen name="Bank" component={Bank}/>
+            <Stack.Screen name="TopUp" component={TopUp}/>
+            <Stack.Screen name="Auto" component={Auto}/>
+            <Stack.Screen name="Close" component={Close}/>
+            <Stack.Screen name="AutoSave" component={AutoSave} />
+            <Stack.Screen name="LoginPage" component={LoginPage}/>
+            <Stack.Screen name="About" component={About} />
+            <Stack.Screen name="Get" component={Get}/>
             
           </Stack.Navigator>
         </NavigationContainer>
@@ -117,8 +90,7 @@ export function BottomTab() {
       tabBarInactiveTintColor:Colors.gray3,
       tabBarStyle:{
         backgroundColor:"white",
-        height:60,
-        paddingBottom:8
+        height:"10%",
       }
     }}>
       <Tab.Screen name="Home" component={Landing} options={{

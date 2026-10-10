@@ -55,7 +55,7 @@ screen:""}
 ]
 
 const itemBur=[
-    {name:"Owealth",icon:<Ionicons name="logo-laravel" size={24} color={Colors.green4} />,
+    {name:"Owealth",icon:<FontAwesome name="google-wallet" size={24} color={Colors.green4} />,
 screen:""},
     {name:"Fixed",icon:<MaterialCommunityIcons name="lock-outline" size={24} color={Colors.green4} />,
 screen:""},

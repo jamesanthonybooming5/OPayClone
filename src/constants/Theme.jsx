@@ -12,17 +12,20 @@ export const Colors = {
   white: "#fff",
   black: "#000",
   fadeblack:"#555",
+  offblack:"#6b7280",
   primary: "#063A4F",
   primary2: "#40196D",
   sky: "#F1FAF9",
   orange: "#ff7040",
+  yellow:"#ffa500",
   secondary: "#00caf2",
   gray: "#EFF2F7",
   chocolate: "#5d5c6c",
   chocolateBackground: "#CECFCD",
   grey2: "#f7f7fd",
   grey3: "#d3d3d3a4",
-  gray4: "#B4B5B5",
+  grey4:"#d0d4dc8d",
+  gray4: "#939595",
   gray5:"#838282d4",
   gray6:"#d8d7d765",
   gray7:"#7e7d7d",
@@ -39,9 +42,13 @@ export const Colors = {
   green5:"#c1f5cd59",
   green6:'#00c32a33',
   green7:"#00a86b",
-  green8:"#00b471",
   green9:"#e6f7f2",
-  green10:'#edf8f5'
+  green10:'#edf8f5',
+  green11:'#02bb932b',
+  green12:"#e4f7f2f8",
+  green13:"#eaf5ef",
+  green14:"#009856bd",
+  tomato:"#db0238fc"
   
 };
 
@@ -106,14 +113,14 @@ export const FONTS = {
   h2: {
     fontFamily: "Poppins-SemiBold",
     fontSize: Sizes.h2,
-    lineHeight: screenHeight * 0.0375,
+    lineHeight: screenHeight * 0.0200,
     fontWeight:"500"
   },
   h3: {
     fontFamily: "Montserrat-Bold",
     fontSize: Sizes.h3,
     lineHeight: screenHeight * 0.025,
-    color:Colors.white
+    color:Colors.black
   },
   h4: {
     fontFamily: "Montserrat-Bold",
@@ -125,6 +132,15 @@ export const FONTS = {
     fontFamily: "Montserrat-Bold",
     fontSize: Sizes.h5,
     lineHeight: screenHeight * 0.025,
+  },
+  h6:{
+    fontSize:12,
+    fontWeight:"300",
+    color:Colors.fadeblack
+  },
+  h7:{
+    fontSize:18,
+    fontWeight:"300"
   },
   // BODY
 
@@ -205,6 +221,13 @@ export const FONTS = {
     lineHeight:18,
     color:Colors.gray5,
     fontWeight:"300"
+  },
+  body5a: {
+    fontFamily: "Montserrat-Regular",
+    fontSize: Sizes.body4,
+    lineHeight:18,
+    color:Colors.gray7,
+    fontWeight:"400"
   },
   body6: {
     fontFamily: "Montserrat-Regular",

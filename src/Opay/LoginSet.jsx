@@ -13,7 +13,7 @@ screen:""},
     {name:"Forgot Password",arrow:<MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />,
 screen:""},
     {name:'Auto-logout Setting',arrow:<MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />,
-screen:""}
+screen:"Auto"}
 ]
 export default function LoginSet () {
     const navigation = useNavigation();
@@ -40,7 +40,7 @@ export default function LoginSet () {
                     data={itemBar}
                     renderItem={({item,})=>{
                         return(
-                         <TouchableOpacity activeOpacity={0.9} onPress={()=>navigation.navigate()} style={{
+                         <TouchableOpacity activeOpacity={0.9} onPress={()=>navigation.navigate(item.screen)} style={{
                             flexDirection:"row",
                             justifyContent:"space-between",
                             alignItems:'center',
@@ -67,37 +67,37 @@ export default function LoginSet () {
         </View>
     )};
 
-    const styles = StyleSheet.create ({
-        Pass:{
-            flex:1,
-            backgroundColor:"white",
-            width:"100%",
-            borderRadius:"4%",
-            paddingHorizontal:"4%",
-            marginVertical:"4%",
-        },
-        Pattern:{
-            flex:1,
-            width:"100%",
-            borderRadius:"4%",
-            paddingHorizontal:"4%",
-            backgroundColor:"white",
-            flexDirection:"row",
-            justifyContent:"space-between",
-            alignItems:"center",
-            paddingVertical:"4%",
-            marginVertical:"4%"
-        },
-        Pattern2:{
-            flex:1,
-            width:"100%",
-            borderRadius:"4%",
-            paddingHorizontal:"4%",
-            backgroundColor:"white",
-            flexDirection:"row",
-            justifyContent:"space-between",
-            alignItems:"center",
-            paddingVertical:"4%",
-            marginVertical:"4%"
-        }
+const styles = StyleSheet.create ({
+    Pass:{
+        flex:1,
+        backgroundColor:"white",
+        width:"100%",
+        borderRadius:"4%",
+        paddingHorizontal:"4%",
+        marginVertical:"4%",
+    },
+    Pattern:{
+        flex:1,
+        width:"100%",
+        borderRadius:"4%",
+        paddingHorizontal:"4%",
+        backgroundColor:"white",
+        flexDirection:"row",
+        justifyContent:"space-between",
+        alignItems:"center",
+        paddingVertical:"4%",
+        marginVertical:"4%"
+    },
+    Pattern2:{
+        flex:1,
+        width:"100%",
+        borderRadius:"4%",
+        paddingHorizontal:"4%",
+        backgroundColor:"white",
+        flexDirection:"row",
+        justifyContent:"space-between",
+        alignItems:"center",
+        paddingVertical:"4%",
+        marginVertical:"4%"
+    }
     })

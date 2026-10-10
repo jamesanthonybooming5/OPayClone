@@ -165,10 +165,11 @@ const styles = StyleSheet.create ({
     marginBottom:"9%"
   },
   button:{
-    backgroundColor:"#04b471",
-    marginBottom:"4%",
-    marginTop:"4%",
-    width:"80%"
+    backgroundColor:Colors.green14,
+    marginBottom:"5%",
+    marginTop:"5%",
+    width:"80%",
+    alignSelf:"center"
   },
   small:{color:Colors.gray7},
   line:{
