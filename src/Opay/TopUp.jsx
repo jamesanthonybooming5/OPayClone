@@ -12,7 +12,7 @@ export default function TopUp () {
     const navigation = useNavigation();
     const [text, setText] = useState ("");
 
-    const isButttonActive = Number(text) >= 50;
+    const isButttonActive = Number(text) >= 100;
 
     return(
         <View style={general.container}>
@@ -33,10 +33,10 @@ export default function TopUp () {
                         style={[styles.input, text.length > 50 ? styles.bold : styles.light]}
                     />
                    </View>
-                     {Number(text)>= 50 && (
+                     {Number(text)>= 100 && (
                         <TouchableOpacity
                          activeOpacity={0.9} 
-                         onLongPress={()=>setText("")}>
+                         onPress={()=>setText("")}>
                             <Ionicons name="close-circle" size={20} color={Colors.lightGray} />
                         </TouchableOpacity>
                      )}

@@ -64,12 +64,13 @@ export default function ToOpay () {
                         keyboardType="numbers-and-punctuation"
                         returnKeyType="done"
                         onFocus={()=>setIsFocused(true)}
+                        onBlur={()=> setIsFocused(false)}
                         style={styles.inputtext}/>
 
                        {text.length > 0 ? (
                         <TouchableOpacity
                          activeOpacity={0.9}
-                         onLongPress={()=> setText("")}>
+                         onPress={()=> setText("")}>
                             <Ionicons name="close-circle" size={20} color={Colors.lightGray}/>
                         </TouchableOpacity>
                        ) : (

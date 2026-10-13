@@ -214,7 +214,7 @@ export default function Setting () {
         flex:1,
         justifyContent:"center",
         alignItems:"center",
-        backgroundColor:"rgba(5, 5, 5, 0.44)"
+        backgroundColor:"rgba(0, 0, 0, 0.45)"
     },
     modalcontent:{
         width:"90%",

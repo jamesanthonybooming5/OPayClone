@@ -123,7 +123,7 @@ export default function Beneficiaries(){
                     {text && (
                         <TouchableOpacity
                          activeOpacity={0.9} 
-                         onLongPress={()=>setText("")}>
+                         onPress={()=>setText("")}>
                             <Ionicons name="close-circle" size={20} color={Colors.lightGray} />
                         </TouchableOpacity>
                      )}
@@ -300,7 +300,7 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:"center",
         alignItems:"center",
-        backgroundColor:"rgba(5, 5, 5, 0.44)"
+        backgroundColor:"rgba(0, 0, 0, 0.45)"
     },
     modalcontent:{
         width:"90%",

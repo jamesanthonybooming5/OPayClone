@@ -32,7 +32,8 @@ export const Colors = {
   gray8:"#f0f2f5",
   gray9:"#f4f6f8",
   gray10:"#999",
-  red: "#eff7fa",
+  gray11:"#edf2f7",
+  red: "#ff2f18",
   lightGray:"#ccc",
   fund:'#0A2342',
   green: "#47cc49",
@@ -42,13 +43,16 @@ export const Colors = {
   green5:"#c1f5cd59",
   green6:'#00c32a33',
   green7:"#00a86b",
+  green8:"#f8f9fa",
   green9:"#e6f7f2",
   green10:'#edf8f5',
   green11:'#02bb932b',
   green12:"#e4f7f2f8",
   green13:"#eaf5ef",
   green14:"#009856bd",
-  tomato:"#db0238fc"
+  tomato:"#db0238fc",
+  blue:"#105ff1c7",
+  pink:"#f4b9d45e"
   
 };
 

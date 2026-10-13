@@ -39,7 +39,7 @@ export default function Landing  () {
              <StatusBar backgroundColor="white" barStyle={'dark-content'} />
              <TouchableOpacity
               style={styles.first} 
-              onPress={()=> navigation.navigate("Account")} 
+              onPress={()=> navigation.navigate("Profile")} 
               activeOpacity={0.9}>
                  <View style={styles.sec}>
                  <FontAwesome name="opera" size={20} color="#04b471"/>

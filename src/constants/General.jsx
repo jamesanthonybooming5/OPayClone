@@ -31,13 +31,13 @@ const general = StyleSheet.create({
     paddingHorizontal: SCREEN_WIDTH * 0.03,
     borderRadius: SCREEN_WIDTH * 0.07,
     alignItems: "center",
-    marginTop: SCREEN_HEIGHT * 0.02,
+    // marginTop: SCREEN_HEIGHT * 0.02,
     justifyContent:"center"
 
   },
   buttonText: {
     color: Colors.white,
-    fontWeight:"300",
+    fontWeight:"400",
     fontSize:15,
     lineHeight:SCREEN_HEIGHT *0.02
   },

@@ -36,6 +36,7 @@ import AutoSave from "../Opay/AutoSave";
 import LoginPage from "../Opay/LoginPage";
 import About from "../Opay/About";
 import Get from "../Opay/Get";
+import Profile from "../Opay/Profile"
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -44,7 +45,7 @@ export default function RootNavigator() {
     return (
       <NavigationIndependentTree>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="LoginPage" screenOptions={{headerShown: false}}>
+          <Stack.Navigator initialRouteName="BottomTab" screenOptions={{headerShown: false}}>
             <Stack.Screen
               name="BottomTab"
               component={BottomTab}
@@ -75,6 +76,7 @@ export default function RootNavigator() {
             <Stack.Screen name="LoginPage" component={LoginPage}/>
             <Stack.Screen name="About" component={About} />
             <Stack.Screen name="Get" component={Get}/>
+            <Stack.Screen name="Profile" component={Profile}/>
             
           </Stack.Navigator>
         </NavigationContainer>

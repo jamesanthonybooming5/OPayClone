@@ -11,7 +11,10 @@ import CustomButton from "../components/CustomButton";
 export default function LoginPage () {
     const navigation = useNavigation ();
     const [isFocused, setIsFocused] = useState (false);
-    const [text,setText] = useState();
+    const [text,setText] = useState("");
+    const [Password,setPassword] = useState("");
+
+    const isFloating = (text && text.length > 0) || isFocused;
     
     return(
         <View style={general.container}>
@@ -22,26 +25,33 @@ export default function LoginPage () {
                     <Text style={styles.pay}>Pay</Text>
                 </View>
 
-                <Text style={FONTS.body7}>Enter your Mobile No./Email</Text>
                 <View style={[isFocused? styles.inputwrapper : styles.inactivewrapper]}>
+                    <Text 
+                     pointerEvents="none"
+                     style={[styles.label, isFloating? styles.floating : styles.placeholder,]}>
+                        Enter your Mobile No./Email
+                    </Text>
                     <TextInput
                     value={text}
-                    onChangeText={setText}
+                    onChangeText={(value)=>{setText(value)}}
                     keyboardType="numbers-and-punctuation"
                     style={styles.inputtext}
                     onFocus={()=> setIsFocused(true)}
                     onBlur={()=> setIsFocused(false)}
                     
                     />
-                    {text && (
+                    
                         <TouchableOpacity
+                        style={[styles.clear,{opacity:text && text.length > 0 ? 1 : 0}]}
                         activeOpacity={0.9} 
-                        onPress={()=>setText("")}>
+                        onPress={()=>setText("")}
+                        disabled={!text || text.length === 0}>
                         <Ionicons name="close-circle" size={24} color={Colors.lightGray} />
                         </TouchableOpacity>
-                    )}
                 </View>
                 <CustomInput 
+                    value={Password}
+                    onChangeText={setPassword}
                     secureTextEntry={true}
                     inputStyle={styles.inputtext}
                     placeholder="Enter 6-digit Password"
@@ -79,8 +89,12 @@ export default function LoginPage () {
         </View>
     )
 }
-
 const styles = StyleSheet.create ({
+    clear:{
+        padding:4,
+        justifyContent:"center",
+        alignItems:"center"
+    },
     header:{
         flexDirection:"row",
         alignItems:"center",
@@ -104,6 +118,7 @@ const styles = StyleSheet.create ({
         flexDirection:"row",
         justifyContent:"space-between",
         alignItems:"center",
+        position:"relative",
     },
     inactivewrapper:{
         borderRadius: SCREEN_WIDTH * 0.02,
@@ -111,13 +126,37 @@ const styles = StyleSheet.create ({
         marginBottom:"7%",
         paddingVertical:"4%",
         height: SCREEN_WIDTH * 0.14,
-        backgroundColor:Colors.gray
+        backgroundColor:Colors.grey2,
+        borderWidth:1,
+        borderColor:Colors.gray4,
+        flexDirection:"row",
+        justifyContent:"space-between",
+        alignItems:"center",
+        position:"relative"
+    },
+    label:{
+        position:"absolute",
+        left:12,
+        backgroundColor:Colors.grey2,
+        paddingHorizontal:6
+    },
+    placeholder:{
+        top:17,
+        ...FONTS.body7,
+        backgroundColor:"transparent",
+    },
+    floating:{
+        top:-10,
+        fontSize:12,
+        color:Colors.green7,
+        fontWeight:"400",
+        zIndex:1,
     },
     inputtext:{
         fontWeight:"300",
         fontSize:15,
         maxWidth:"90%",
-        flex:1
+        flex:1,
     },
     forgot:{
         alignSelf:"flex-end",
@@ -138,7 +177,6 @@ const styles = StyleSheet.create ({
     },
     create:{
         textAlign:"center",
-        color:Colors.fadeblack,
         fontWeight:"300",
         marginTop:"80%"
     },

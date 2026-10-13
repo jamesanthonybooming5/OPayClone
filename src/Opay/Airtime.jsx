@@ -60,7 +60,7 @@ export default function Airtime () {
                 {text && (
                 <TouchableOpacity
                 activeOpacity={0.9} 
-                onLongPress={()=>setText("")}>
+                onPress={()=>setText("")}>
                 <Ionicons name="close-circle" size={27} color={Colors.lightGray} />
                 </TouchableOpacity>
               )}

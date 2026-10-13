@@ -74,19 +74,21 @@ export default function User () {
             <TouchableOpacity 
                 activeOpacity={0.9} 
                 style={styles.header} 
-                onPress={()=>navigation.navigate("Account")}>
+                onPress={()=>navigation.navigate("Profile")}>
                 <View style={styles.iconholder}>
                    <FontAwesome name="opera" size={24} color="#04b471" />
                 </View>
 
                 <View style={{marginBottom:5,}} >
                  <Text style={FONTS.body2a} >Hi,EDWARD </Text>
-                 <View style={styles.hi}>
+                 <TouchableOpacity 
+                  onPress={()=> navigation.navigate("Account") }
+                  style={styles.hi}>
                      <MaterialCommunityIcons name="medal" size={20} color="#a98d38dc" />
                      <View style={styles.tierholder}>
                          <Text style={styles.tiertext}>Tier 1</Text>
                      </View>
-                 </View>
+                 </TouchableOpacity>
              </View>   
          </TouchableOpacity >
 
@@ -348,12 +350,4 @@ const styles=StyleSheet.create ({
         lineHeight:2,
         width:"100%"
     }
-//    Flat:{width:"89%",
-//         flex:1,
-//         backgroundColor:"white",
-//         borderRadius:"4%",
-//         marginVertical:"2%",
-//         marginHorizontal:"5%",
-//         paddingTop:"2%"
-//     },
 })

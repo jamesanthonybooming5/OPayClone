@@ -86,7 +86,8 @@ const styles = StyleSheet.create({
     button:{
         width:"80%",
         alignSelf:"center",
-        backgroundColor:Colors.green14
+        backgroundColor:Colors.green14,
+        marginTop:"4%"
     },
     text:{
         fontSize:17

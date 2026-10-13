@@ -1,11 +1,21 @@
-import {View,Text,ScrollView,StyleSheet, TouchableOpacity} from 'react-native'
+import {View,Text,ScrollView,StyleSheet, TouchableOpacity,LayoutAnimation,UIManager,Platform} from 'react-native'
 import general from '../constants/General'
 import CustomHeading from '../components/CustomHeading'
 import { Colors, FONTS } from '../constants/Theme';
-import {MaterialCommunityIcons,MaterialIcons,} from "@expo/vector-icons";
+import {MaterialCommunityIcons,MaterialIcons,Ionicons} from "@expo/vector-icons";
 import CustomButton from '../components/CustomButton';
+import { useState } from 'react';
+
+if (Platform.OS === "android" && UIManager.setLayoutAnimationEnabledExperimental)
+{UIManager.setLayoutAnimationEnabledExperimental(true);}
 
 export default function Account () {
+
+  const [expanded, setExpanded] = useState(false);
+
+  const toggleExpanded = () => {LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+        setExpanded(!expanded);};
+
     return(
      <View style={general.container}>
         <CustomHeading title={"Accounts Limits"}/>
@@ -91,14 +101,19 @@ export default function Account () {
           </View>
 
           <View style={styles.Tier3}>
-           <View style={styles.holder}>
+           <TouchableOpacity 
+              onPress={toggleExpanded}
+              activeOpacity={0.9}
+              style={styles.holder}>
              <View style={styles.icon2}>
               <MaterialCommunityIcons name="medal" size={23} color="orange" />
               <Text style={FONTS.body3c}>Tier 3</Text>
               </View>
-              <MaterialIcons name="keyboard-arrow-up" size={30} color={'Black'}/>
-            </View>
-            <View style={styles.bal}>
+              <Ionicons name={expanded? "chevron-up" : "chevron-down"} size={20} color={Colors.gray4}/>
+            </TouchableOpacity>
+           {expanded && (
+            <View>
+               <View style={styles.bal}>
               <Text style={styles.small}>Daily transaction limit</Text>
               <Text style={FONTS.body3c}>#500,000,000.00</Text>
             </View>
@@ -106,6 +121,8 @@ export default function Account () {
               <Text style={styles.small}>Maximum account balance</Text>
               <Text style={FONTS.body3c}>Unlimited</Text>
             </View>
+            </View>
+            )}
           </View>
        </ScrollView>
        <View style={{

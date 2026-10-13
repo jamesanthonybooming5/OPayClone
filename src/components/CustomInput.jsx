@@ -31,6 +31,7 @@ const CustomInput = ({
 
     const [show, setShow] = useState(false);
     const [isFocused, setIsFocused] = useState (false);
+    
   return (
     <View style={[styles.container, containerStyle]}>
       {label && <Text style={general.label}>{label}</Text>}
@@ -55,7 +56,7 @@ const CustomInput = ({
           onFocus={()=> setIsFocused(true)}
           onBlur={()=> setIsFocused(false)}
         />
-        {secureTextEntry && value?.length > 0 && (
+        {secureTextEntry && value && value.length > 0 && (
           <TouchableOpacity activeOpacity={0.7} onPress={() => setShow(!show)}>
             <MaterialCommunityIcons name={show ? "eye":"eye-closed"} size={20} color="black" />
           </TouchableOpacity>

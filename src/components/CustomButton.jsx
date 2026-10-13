@@ -10,15 +10,6 @@ import {
 import general from "../constants/General";
 import { Colors } from "../constants/Theme";
 
-interface Props {
-  title: string;
-  onPress: () => void;
-  buttonStyle?: ViewStyle;
-  textStyle?: TextStyle;
-  disabled?: boolean;
-  active?:boolean
-}
-
 const CustomButton = ({
   title,
   onPress,
@@ -26,7 +17,7 @@ const CustomButton = ({
   disabled = false,
   buttonStyle,
   textStyle
-}: Props) => {
+}) => {
   const dynamicStyle = {
     backgroundColor: active ? Colors.primary: Colors.sky,
     opacity: disabled ? 0.5 : 1,
