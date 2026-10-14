@@ -50,7 +50,7 @@ export default function Landing  () {
              <View style={styles.operate}>
                  <SimpleLineIcons name="earphones-alt" size={18} color="black" onPress={()=>navigation.navigate()}/>
                   <MaterialCommunityIcons name="line-scan" size={20} color="black" onPress={()=>navigation.navigate()}/>
-                 <TouchableOpacity activeOpacity={0.9} onPress={()=>navigation.navigate("Notif")}><Fontisto name="bell" size={20} color="black" /></TouchableOpacity>
+                 <TouchableOpacity activeOpacity={0.5} onPress={()=>navigation.navigate("Notif")}><Fontisto name="bell" size={20} color="black" /></TouchableOpacity>
              </View>
           </View>
 
@@ -141,7 +141,7 @@ export default function Landing  () {
                      </TouchableOpacity>
                      <TouchableOpacity 
                      activeOpacity={0.9}  
-                     onPress={()=>navigation.navigate("")}
+                     onPress={()=>navigation.navigate("ToBank")}
                      style={styles.centre}>
                          <View style={styles.pay}>
                          <MaterialCommunityIcons name="bank" size={25} color="#04b471"/></View>

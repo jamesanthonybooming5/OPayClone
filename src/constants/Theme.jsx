@@ -25,13 +25,16 @@ export const Colors = {
   grey2: "#f7f7fd",
   grey3: "#d3d3d3a4",
   grey4:"#d0d4dc8d",
+  grey5:"#d1d5db",
+  grey6:"#9ca3af",
+  grey7:"#888888",
   gray4: "#939595",
   gray5:"#838282d4",
   gray6:"#d8d7d765",
   gray7:"#7e7d7d",
   gray8:"#f0f2f5",
   gray9:"#f4f6f8",
-  gray10:"#999",
+  gray10:"#999999",
   gray11:"#edf2f7",
   red: "#ff2f18",
   lightGray:"#ccc",
@@ -50,9 +53,12 @@ export const Colors = {
   green12:"#e4f7f2f8",
   green13:"#eaf5ef",
   green14:"#009856bd",
+  green15:"#01a361",
   tomato:"#db0238fc",
   blue:"#105ff1c7",
-  pink:"#f4b9d45e"
+  pink:"#f4b9d45e",
+  lightpurple:"#bb9bee5c",
+  purple:"#7729f5c8"
   
 };
 
@@ -130,7 +136,7 @@ export const FONTS = {
     fontFamily: "Montserrat-Bold",
     fontSize: Sizes.h4,
     lineHeight: screenHeight * 0.040,
-    color:Colors.white,
+    color:Colors.green15,
   },
   h5: {
     fontFamily: "Montserrat-Bold",

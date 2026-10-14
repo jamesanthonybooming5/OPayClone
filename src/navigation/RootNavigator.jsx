@@ -37,6 +37,7 @@ import LoginPage from "../Opay/LoginPage";
 import About from "../Opay/About";
 import Get from "../Opay/Get";
 import Profile from "../Opay/Profile"
+import ToBank from "../Opay/ToBank";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -77,6 +78,7 @@ export default function RootNavigator() {
             <Stack.Screen name="About" component={About} />
             <Stack.Screen name="Get" component={Get}/>
             <Stack.Screen name="Profile" component={Profile}/>
+            <Stack.Screen name="ToBank" component={ToBank}/>
             
           </Stack.Navigator>
         </NavigationContainer>

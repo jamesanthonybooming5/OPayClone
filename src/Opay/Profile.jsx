@@ -24,7 +24,8 @@ export default function Profile ({imageUri,onCameraPress}) {
             name:"Gender", subname:"Male"
         },
         {id:"5",
-            name:"Date of birth", subname:"**-**-10"
+            name:"Date of birth", subname:"**-**-10",
+            screen:""
         },
         {id:"6",
             name:"Email", subname:"Enter Email", arrow:<MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />,
@@ -116,9 +117,11 @@ export default function Profile ({imageUri,onCameraPress}) {
                           activeOpacity={0.9}
                           onPress={()=> navigation.navigate(item.screen)}>
                             <Text style={styles.opaytext}>{item.name}</Text>
-                            <View style={styles.arrow}>
+                            <View style={styles.right}>
                                 <Text style={styles.account}>{item.subname}</Text>
-                                {item.arrow ? <MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />: null}
+                               <View style={styles.arrow}>
+                                 {item.arrow ? item.arrow : null}
+                               </View>
                             </View>
                         </TouchableOpacity>
                     )
@@ -151,7 +154,7 @@ const styles = StyleSheet.create ({
     containerholder:{
         backgroundColor:"white",
         borderRadius:10,
-        paddingVertical:"4%",
+        paddingVertical:"7%",
         paddingHorizontal:"4%",
         marginTop:"5%",
     },
@@ -200,7 +203,7 @@ const styles = StyleSheet.create ({
     account:{
         color:Colors.gray4,
         fontSize:15,
-        fontWeight:"300"
+        fontWeight:"300",
     },
     tierholder:{
         flexDirection:"row",
@@ -234,13 +237,20 @@ const styles = StyleSheet.create ({
         marginVertical:"5%",
     },
     holder:{
-        paddingVertical:15,
+        paddingVertical:20,
         flexDirection:'row',
         justifyContent:"space-between",
         alignItems:"center",
     },
-    arrow:{
+    right:{
         flexDirection:"row",
         alignItems:"center",
+        width:"65%",
+        justifyContent:"flex-end"
+    },
+    arrow:{
+        width:20,
+        alignItems:"flex-end",
+        justifyContent:"center"
     }
 });

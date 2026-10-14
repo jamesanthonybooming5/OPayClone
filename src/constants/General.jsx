@@ -31,7 +31,7 @@ const general = StyleSheet.create({
     paddingHorizontal: SCREEN_WIDTH * 0.03,
     borderRadius: SCREEN_WIDTH * 0.07,
     alignItems: "center",
-    // marginTop: SCREEN_HEIGHT * 0.02,
+    // marginTop: SCREEN_HEIGHT * 0.02
     justifyContent:"center"
 
   },
@@ -53,7 +53,7 @@ const general = StyleSheet.create({
     backgroundColor: Colors.sky,
   },
   label: {
-    fontSize: SCREEN_WIDTH * 0.045,
+    fontSize: SCREEN_WIDTH * 0.040,
     color: Colors.black,
     marginBottom: SCREEN_HEIGHT * 0.020,
   },

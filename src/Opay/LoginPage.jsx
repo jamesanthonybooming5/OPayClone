@@ -4,7 +4,7 @@ import CustomHeader from "../components/CustomHeader";
 import { FontAwesome,Ionicons } from "@expo/vector-icons";
 import { Colors, FONTS ,SCREEN_WIDTH} from "../constants/Theme";
 import CustomInput from "../components/CustomInput";
-import { useState } from "react";
+import { useState,useRef } from "react";
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from "../components/CustomButton";
 
@@ -13,8 +13,10 @@ export default function LoginPage () {
     const [isFocused, setIsFocused] = useState (false);
     const [text,setText] = useState("");
     const [Password,setPassword] = useState("");
+    const inputRef = useRef (null);
 
-    const isFloating = (text && text.length > 0) || isFocused;
+    const isFilled = text && text.length > 0;
+    const isActive = isFocused || isFilled;
     
     return(
         <View style={general.container}>
@@ -25,29 +27,32 @@ export default function LoginPage () {
                     <Text style={styles.pay}>Pay</Text>
                 </View>
 
-                <View style={[isFocused? styles.inputwrapper : styles.inactivewrapper]}>
-                    <Text 
+                <View 
+                 onStartShouldSetResponder={() => {inputRef.current?.focus(); return true;}}
+                 style={[styles.inputwrapper, {borderColor:isFocused? Colors.green7 : Colors.gray4,
+                    backgroundColor:Colors.grey2}]}>
+                   <Text 
                      pointerEvents="none"
-                     style={[styles.label, isFloating? styles.floating : styles.placeholder,]}>
+                     style={[styles.label, isActive? styles.floating : styles.placeholder,{color:isFocused? Colors.green7 : Colors.gray4}]}>
                         Enter your Mobile No./Email
                     </Text>
                     <TextInput
                     value={text}
-                    onChangeText={(value)=>{setText(value)}}
+                    onChangeText={setText}
                     keyboardType="numbers-and-punctuation"
                     style={styles.inputtext}
                     onFocus={()=> setIsFocused(true)}
                     onBlur={()=> setIsFocused(false)}
                     
                     />
-                    
+                    {isFocused && isFilled && ( 
                         <TouchableOpacity
-                        style={[styles.clear,{opacity:text && text.length > 0 ? 1 : 0}]}
+                        style={{position:"relative"}}
                         activeOpacity={0.9} 
-                        onPress={()=>setText("")}
-                        disabled={!text || text.length === 0}>
+                        onPress={()=>setText("")}>
                         <Ionicons name="close-circle" size={24} color={Colors.lightGray} />
                         </TouchableOpacity>
+                    )}
                 </View>
                 <CustomInput 
                     value={Password}
@@ -56,11 +61,13 @@ export default function LoginPage () {
                     inputStyle={styles.inputtext}
                     placeholder="Enter 6-digit Password"
                 />
-                <TouchableOpacity
+                <View>
+                    <TouchableOpacity
                   activeOpacity={0.9}
                   onPress={()=> navigation.navigate()}>
                     <Text style={styles.forgot}>Forgot Password?</Text>
                 </TouchableOpacity>
+                </View>
 
                 <CustomButton title="Log in"
                  disabled={!text} 
@@ -90,11 +97,6 @@ export default function LoginPage () {
     )
 }
 const styles = StyleSheet.create ({
-    clear:{
-        padding:4,
-        justifyContent:"center",
-        alignItems:"center"
-    },
     header:{
         flexDirection:"row",
         alignItems:"center",
@@ -112,7 +114,6 @@ const styles = StyleSheet.create ({
         paddingHorizontal:SCREEN_WIDTH * 0.03,
         marginBottom:"7%",
         borderWidth:1,
-        borderColor:Colors.green7,
         paddingVertical:"4%",
         height: SCREEN_WIDTH * 0.14,
         flexDirection:"row",
@@ -120,25 +121,11 @@ const styles = StyleSheet.create ({
         alignItems:"center",
         position:"relative",
     },
-    inactivewrapper:{
-        borderRadius: SCREEN_WIDTH * 0.02,
-        paddingHorizontal:SCREEN_WIDTH * 0.03,
-        marginBottom:"7%",
-        paddingVertical:"4%",
-        height: SCREEN_WIDTH * 0.14,
-        backgroundColor:Colors.grey2,
-        borderWidth:1,
-        borderColor:Colors.gray4,
-        flexDirection:"row",
-        justifyContent:"space-between",
-        alignItems:"center",
-        position:"relative"
-    },
     label:{
         position:"absolute",
         left:12,
         backgroundColor:Colors.grey2,
-        paddingHorizontal:6
+        paddingHorizontal:6,
     },
     placeholder:{
         top:17,
@@ -148,7 +135,6 @@ const styles = StyleSheet.create ({
     floating:{
         top:-10,
         fontSize:12,
-        color:Colors.green7,
         fontWeight:"400",
         zIndex:1,
     },
@@ -159,9 +145,8 @@ const styles = StyleSheet.create ({
         flex:1,
     },
     forgot:{
-        alignSelf:"flex-end",
         color:Colors.green7,
-        fontSize:13
+        fontSize:13,
     },
      button:{
         width:"80%",

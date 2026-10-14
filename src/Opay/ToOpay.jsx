@@ -170,7 +170,7 @@ const styles=StyleSheet.create ({
     },
     headtitle:{
         fontSize:17,
-        fontWeight:'600',
+        fontWeight:'400',
         color:"black",
     },
     freecontainer:{
@@ -224,7 +224,6 @@ const styles=StyleSheet.create ({
         width:"100%",
         borderRadius:"3%",
         backgroundColor:'#fffefed5',
-        flex:1,  
         paddingHorizontal:"4%",
         marginVertical:"2%",
         paddingVertical:"4%",
