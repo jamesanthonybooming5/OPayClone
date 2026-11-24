@@ -1,12 +1,28 @@
 import {View,Text , StyleSheet,TouchableOpacity, TextInput} from "react-native";
+import React, { useCallback } from "react";
 import general from "../constants/General";
 import CustomHeader from "../components/CustomHeader";
 import { FontAwesome,Ionicons } from "@expo/vector-icons";
 import { Colors, FONTS ,SCREEN_WIDTH} from "../constants/Theme";
 import CustomInput from "../components/CustomInput";
-import { useState,useRef } from "react";
+import { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from "../components/CustomButton";
+import { useRef } from "react";
+
+const MemoizedInput = React.memo(({value,inputRef,onChangeText,onFocus,onBlur}) => {
+    return(
+        <TextInput
+            ref={inputRef}
+            value={value}
+            onChangeText={onChangeText}
+            keyboardType="numeric"
+            style={styles.inputtext}
+            onFocus={onFocus}
+            onBlur={onBlur}
+        />
+    );
+});
 
 export default function LoginPage () {
     const navigation = useNavigation ();
@@ -15,8 +31,11 @@ export default function LoginPage () {
     const [Password,setPassword] = useState("");
     const inputRef = useRef (null);
 
-    const isFilled = text && text.length > 0;
-    const isActive = isFocused || isFilled;
+    const hasContent = text.length > 0;
+
+    const handleFocus = useCallback(()=> setIsFocused(true), []);
+    const handleBlur = useCallback(()=> setIsFocused(false), []);
+
     
     return(
         <View style={general.container}>
@@ -27,25 +46,25 @@ export default function LoginPage () {
                     <Text style={styles.pay}>Pay</Text>
                 </View>
 
-                <View 
-                 onStartShouldSetResponder={() => {inputRef.current?.focus(); return true;}}
-                 style={[styles.inputwrapper, {borderColor:isFocused? Colors.green7 : Colors.gray4,
-                    backgroundColor:Colors.grey2}]}>
+                <TouchableOpacity 
+                    activeOpacity={0.9}
+                    onPress={() => inputRef.current?.focus()}
+                    style={[styles.inputwrapper, {borderColor:isFocused? Colors.green7 : Colors.grey3}]}>
                    <Text 
                      pointerEvents="none"
-                     style={[styles.label, isActive? styles.floating : styles.placeholder,{color:isFocused? Colors.green7 : Colors.gray4}]}>
+                     style={[styles.label, hasContent ? styles.floating : styles.placeholder,{color:isFocused? Colors.green7 : Colors.gray3}]}>
                         Enter your Mobile No./Email
                     </Text>
-                    <TextInput
-                    value={text}
-                    onChangeText={setText}
-                    keyboardType="numbers-and-punctuation"
-                    style={styles.inputtext}
-                    onFocus={()=> setIsFocused(true)}
-                    onBlur={()=> setIsFocused(false)}
-                    
+                    <MemoizedInput
+                        ref={inputRef}
+                        value={text}
+                        onChangeText={setText}
+                        keyboardType="numbers-and-punctuation"
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                        style={styles.inputtext}
                     />
-                    {isFocused && isFilled && ( 
+                    {hasContent && ( 
                         <TouchableOpacity
                         style={{position:"relative"}}
                         activeOpacity={0.9} 
@@ -53,7 +72,7 @@ export default function LoginPage () {
                         <Ionicons name="close-circle" size={24} color={Colors.lightGray} />
                         </TouchableOpacity>
                     )}
-                </View>
+                </TouchableOpacity>
                 <CustomInput 
                     value={Password}
                     onChangeText={setPassword}

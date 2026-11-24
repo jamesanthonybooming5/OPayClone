@@ -32,7 +32,7 @@ export default function Profile ({imageUri,onCameraPress}) {
             screen:""
         },
         {id:"7",
-            name:"Address", screen:"", arrow:<MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />,
+            name:"Address", screen:"Address", arrow:<MaterialIcons name="keyboard-arrow-right" size={30} color={Colors.gray4} />,
         }
     ]
 
@@ -45,12 +45,8 @@ export default function Profile ({imageUri,onCameraPress}) {
 
                <View style={styles.head}>
                     <View>
-                        <View style={{position:"relative"}}>
-                            <Entypo name="mail" size={35} color={Colors.blue} />
-                        </View>
-                        <View style={styles.bell}>
-                            <Octicons name="bell-fill" size={17} color="orange" />
-                        </View>
+                        <Entypo name="mail" size={35} color={Colors.blue} style={{position:"relative"}}/>
+                        <Octicons name="bell-fill" size={17} color="orange" style={styles.bell}/>
                     </View>
                     <View style={{position:"relative"}}>
                         <Text  style={FONTS.body3a}>Take Control, Stay Informed</Text>
@@ -60,15 +56,7 @@ export default function Profile ({imageUri,onCameraPress}) {
 
                <View style={styles.containerholder}>
                     <View style={styles.avatarholder}>
-                        {imageUri ? (
-                            <Image source={{uri: imageUri}}
-                                style={styles.avatar}
-                            />
-                        ) : (
-                            <Ionicons name="person" size={40} color={Colors.lightGray} 
-                                style={styles.defaulticon}
-                            />
-                        )}
+                        <Ionicons name="person" size={40} color={Colors.lightGray} style={styles.defaulticon}/>
                         <TouchableOpacity 
                          style={styles.overlay}
                          activeOpacity={0.9}
@@ -119,9 +107,9 @@ export default function Profile ({imageUri,onCameraPress}) {
                             <Text style={styles.opaytext}>{item.name}</Text>
                             <View style={styles.right}>
                                 <Text style={styles.account}>{item.subname}</Text>
-                               <View style={styles.arrow}>
-                                 {item.arrow ? item.arrow : null}
-                               </View>
+                              {item.arrow ? ( <View style={styles.arrow}>
+                                 {item.arrow}
+                               </View>) : null}
                             </View>
                         </TouchableOpacity>
                     )
@@ -204,6 +192,7 @@ const styles = StyleSheet.create ({
         color:Colors.gray4,
         fontSize:15,
         fontWeight:"300",
+        textAlign:"right"
     },
     tierholder:{
         flexDirection:"row",
@@ -249,8 +238,9 @@ const styles = StyleSheet.create ({
         justifyContent:"flex-end"
     },
     arrow:{
-        width:20,
-        alignItems:"flex-end",
-        justifyContent:"center"
+        width:25,
+        alignItems:"center",
+        justifyContent:"center",
+        marginRight:-4
     }
 });

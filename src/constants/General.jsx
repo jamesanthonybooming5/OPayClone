@@ -37,8 +37,7 @@ const general = StyleSheet.create({
   },
   buttonText: {
     color: Colors.white,
-    fontWeight:"400",
-    fontSize:15,
+    fontSize:17,
     lineHeight:SCREEN_HEIGHT *0.02
   },
   input: {

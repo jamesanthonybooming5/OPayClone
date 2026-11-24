@@ -1,17 +1,18 @@
 import {Text,View,StyleSheet,TextInput,TouchableOpacity,FlatList,Modal } from "react-native";
 import general from "../constants/General";
 import CustomHeading from "../components/CustomHeading";
-import { act, useState } from "react";
+import { useState } from "react";
 import { Feather,FontAwesome6,Ionicons,MaterialIcons,MaterialCommunityIcons,Octicons} from "@expo/vector-icons";
 import { Colors, SCREEN_WIDTH,FONTS } from "../constants/Theme";
 import { useNavigation } from "@react-navigation/native";
 
 export default function Beneficiaries(){
-    const [text, setText] = useState ();
+    const [text, setText] = useState ('');
     const[activeTab, setActiveTab] = useState ("Recents");
     const [openPopupId, setOpenPopupId] = useState (null);
     const [deleteModalVisble, setDeleteModalVisible] = useState (false);
     const [selectedBeneficiary, setSelectedBeneficairy] = useState (null);
+    const navigation = useNavigation();
 
     const [itemBar,setitemBar]= useState([
     {id:"1",
@@ -57,13 +58,23 @@ export default function Beneficiaries(){
     const handleDelete = () => {setitemBar (prev => prev.filter(item => item.id !== selectedBeneficiary.id));
         setDeleteModalVisible(false); setSelectedBeneficairy(null)
      }
-     const displayeditems = itemBar.filter(item => {if (activeTab === "Favorites") return item.isFavorite; return true;});
-
+     const displayeditems = itemBar.filter((item) => {
+     const matchesTab = activeTab === "Favorites" ? item.isFavorite : true;
+     const matchesSearch = item.name.toLowerCase().includes(text.toLowerCase().trim()) ||
+                            item.price.toLowerCase().includes(text.toLowerCase().trim());
+        return matchesTab && matchesSearch; 
+        });
 
      const renderItem = ({item}) => (
         <TouchableOpacity
             activeOpacity={0.9}
-            style={[styles.account, {zIndex: openPopupId === item.id ? 1000 : 1}]}>
+            style={[styles.account, {zIndex: openPopupId === item.id ? 1000 : 1}]}
+            onPress={()=> {navigation.navigate('OPayacct', {
+                beneficiaryId:item.id,
+                beneficiaryName:item.name,
+                beneficiaryAccount: item.price,
+                beneficiaryIcon:item.Icon
+            })}}>
             <View style={styles.held}>
                 <View style={styles.iconholder2}>{item.Icon}</View>
                 <View style={styles.textholder}>
@@ -151,6 +162,10 @@ export default function Beneficiaries(){
              data={displayeditems}
              keyExtractor={(item) => item.id}
               renderItem={renderItem}
+              ListEmptyComponent={
+                <View style={{alignItems:"center",paddingVertical:32}}>
+                    <Text style={{color:Colors.grey8}}>No bank found for {text}</Text>
+                </View>}
             />
 
             <Modal 

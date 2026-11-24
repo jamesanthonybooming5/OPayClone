@@ -28,6 +28,7 @@ export const Colors = {
   grey5:"#d1d5db",
   grey6:"#9ca3af",
   grey7:"#888888",
+  grey8:"#6b7280",
   gray4: "#939595",
   gray5:"#838282d4",
   gray6:"#d8d7d765",
@@ -224,6 +225,12 @@ export const FONTS = {
     fontFamily: "Montserrat-Regular",
     fontSize: Sizes.body4,
     lineHeight: 18,
+  },
+  body4a: {
+    fontFamily: "Montserrat-Regular",
+    fontSize:13,
+    lineHeight: 28,
+    color:Colors.offblack
   },
   body5: {
     fontFamily: "Montserrat-Regular",

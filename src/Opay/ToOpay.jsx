@@ -17,20 +17,23 @@ export default function ToOpay () {
     {id:"1",
         type:"Recents",
         name:'ABCDEF GHIJK LMNOPQRS',Icon:<FontAwesome6 name="user-large" size={20} color="white" />,
-    price:'800 123 4567'},
+        price:'800 123 4567',
+    },
     {id:"2",
         type:"Recents",
         name:'ABCDEF GHIJK LMNOP',Icon:<FontAwesome6 name="user-large" size={20} color="white" />,
-    price:'801 234 5678'},
+        price:'801 234 5678', 
+    },
     {id:"3",
         type:"Recents",
         name:'ABCDEFGHI JKLMNO PQURST',Icon:<FontAwesome6 name="user-large" size={20} color="white" />,
-    price:'812 345 6789',},
+        price:'812 345 6789',
+    },
     {id:"4",
         type:"Recents",
         name:'ABCDEFGHI JKLMNO PQURST',Icon:<FontAwesome6 name="user-large" size={20} color="white" />,
-    price:'812 345 6789',},
-    
+        price:'812 345 6789',
+    },
     ]
 
     const filteredData = itemBar.filter(item => item.type === activeTab);
@@ -109,25 +112,30 @@ export default function ToOpay () {
                     })}
                  </View>
 
-                 <FlatList
-                        scrollEnabled={false}
-                        style={styles.border}
-                        data={filteredData}
-                        keyExtractor={(item)=> item.id}
-                        renderItem={({item})=>{
-                        return(
-                            <TouchableOpacity
-                            activeOpacity={0.9}
-                            onPress={() => navigation.navigate("")}
-                            style={styles.accounts}>
-                                <View style={styles.iconholder2}>{item.Icon}</View>
-                                <View style={styles.textholder}>
-                                    <Text style={FONTS.body8}>{item.name}</Text>
-                                    <Text style={FONTS.body5}>{item.price}</Text>
-                                </View>
-                            </TouchableOpacity>
-                        );}}
-                    />
+                <FlatList
+                    scrollEnabled={false}
+                    style={styles.border}
+                    data={filteredData}
+                    keyExtractor={(item)=> item.id}
+                    renderItem={({item})=>{
+                    return(
+                        <TouchableOpacity
+                        activeOpacity={0.9}
+                        onPress={()=> {navigation.navigate('OPayacct', {
+                            beneficiaryId:item.id,
+                            beneficiaryName:item.name,
+                            beneficiaryPrice: item.price,
+                            beneficiaryIcon:item.Icon
+                        })}}
+                        style={styles.accounts}>
+                            <View style={styles.iconholder2}>{item.Icon}</View>
+                            <View style={styles.textholder}>
+                                <Text style={FONTS.body8}>{item.name}</Text>
+                                <Text style={FONTS.body5}>{item.price}</Text>
+                            </View>
+                        </TouchableOpacity>
+                    );}}
+                />
                     <TouchableOpacity 
                      activeOpacity={0.9} 
                      style={styles.view}

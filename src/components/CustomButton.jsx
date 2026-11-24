@@ -31,7 +31,7 @@ const CustomButton = ({
       <TouchableOpacity
         style={[general.button, dynamicStyle, buttonStyle]}
         onPress={onPress}
-        activeOpacity={0.7}
+        activeOpacity={0.9}
         disabled={disabled}
       >
         <Text style={[general.buttonText, dynamicTextStyle,textStyle]}>{title}</Text>

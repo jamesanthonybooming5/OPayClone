@@ -99,7 +99,7 @@ export default function Add () {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                 onPress={()=> navigation.navigate()}
+                 onPress={()=> navigation.navigate('USSD')}
                  activeOpacity={0.9} 
                  style={styles.Cash}>
                  <View style={styles.holder}>

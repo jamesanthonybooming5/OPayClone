@@ -38,6 +38,11 @@ import About from "../Opay/About";
 import Get from "../Opay/Get";
 import Profile from "../Opay/Profile"
 import ToBank from "../Opay/ToBank";
+import OPayacct from "../Opay/OPayacct";
+import Address from "../Opay/Address";
+import Transfer from "../Opay/Transfer";
+import Bankacct from "../Opay/Bankacct";
+import USSD from "../Opay/USSD";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -79,6 +84,11 @@ export default function RootNavigator() {
             <Stack.Screen name="Get" component={Get}/>
             <Stack.Screen name="Profile" component={Profile}/>
             <Stack.Screen name="ToBank" component={ToBank}/>
+            <Stack.Screen name="OPayacct" component={OPayacct}/>
+            <Stack.Screen name="Address" component={Address}/>
+            <Stack.Screen name="Transfer" component={Transfer}/>
+            <Stack.Screen name="Bankacct" component={Bankacct}/>
+            <Stack.Screen name="USSD" component={USSD}/>
             
           </Stack.Navigator>
         </NavigationContainer>
